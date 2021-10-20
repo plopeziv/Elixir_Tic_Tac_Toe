@@ -8,10 +8,18 @@ defmodule ElixirTicTacToeTest do
   end
 
   test "Print Board" do
-    # expectedOutput = "\n 1 | 2 | 3 \n---+---+---\n 4 | 5 | 6 \n---+---+---\n 7 | 8 | 9 \n"
 
+    expectedOutput = ""<>
+    "\n 1 | 2 | X "<>
+    "\n---+---+---"<>
+    "\n 4 | X | 6 "<>
+    "\n---+---+---"<>
+    "\n X | 8 | 9 "<>
+    "\n\n"
+    possibleInputs = %{spotOne: "1", spotTwo: "2", spotThree: "X",
+                      spotFour: "4", spotFive: "X", spotSix: "6",
+                      spotSeven: "X", spotEight: "8", spotNine: "9"}
 
-    # assert capture_io(ElixirTicTacToe.printBoard()) == expectedOutput
-    assert true == true
+    assert capture_io(fn -> ElixirTicTacToe.printBoard(possibleInputs) end) == expectedOutput
   end
 end
