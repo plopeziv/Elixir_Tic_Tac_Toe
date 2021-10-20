@@ -1,6 +1,6 @@
 # ElixirTicTacToe
 
-**TODO: Add description**
+This application runs a user vs computer Tic-Tac-Toe command line game. To play simply followw the command prompts and submit a response by typing on the kyboard followed by the enter button. This game was created as a sister to its python counter part, using functional programming principals. 
 
 ## Installation
 
@@ -19,3 +19,13 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/elixir_tic_tac_toe](https://hexdocs.pm/elixir_tic_tac_toe).
 
+## Testing
+While inside the elixir_tic_tac_toe directory run the command below.
+
+```elixir
+mix test
+```
+
+## Contributors
+
+The initial Tic-Tac-Toe program was created by Pedro Lopez uunder the guidance and oversight of Dave Torre & Matt Readout. 
