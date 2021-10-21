@@ -1,17 +1,5 @@
 defmodule ElixirTicTacToe do
-  @moduledoc """
-  Documentation for `ElixirTicTacToe`.
-  """
 
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ElixirTicTacToe.hello()
-      :world
-
-  """
   def hello do
     :world
   end
@@ -26,3 +14,9 @@ defmodule ElixirTicTacToe do
     IO.puts printedBoard
   end
 end
+
+possibleInputs = %{spotOne: "1", spotTwo: "2", spotThree: "3",
+spotFour: "4", spotFive: "5", spotSix: "6",
+spotSeven: "7", spotEight: "8", spotNine: "9"}
+
+ElixirTicTacToe.printBoard(possibleInputs)
