@@ -1,4 +1,4 @@
-defmodule ComputerMove do
+defmodule FirstComputerSpot do
 
   def takeFirstAvailableSpot(board, token) do
     import WinningCombo
