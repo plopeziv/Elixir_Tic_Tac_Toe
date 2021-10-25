@@ -10,10 +10,13 @@ defmodule WinningCombo do
     diagonalTopLeft = [board[:spotOne], board[:spotFive], board[:spotNine]]
     diagonalTopRight = [board[:spotThree], board[:spotFive], board[:spotSeven]]
 
-    resultsList = Enum.map([topRow, middleRow, bottomRow,
-                            leftColumn, middleColumn, rightColumn,
-                            diagonalTopLeft, diagonalTopRight],
-    fn x -> isAllSameToken(x) end)
+    winningCombos = [topRow, middleRow, bottomRow,
+                    leftColumn, middleColumn, rightColumn,
+                    diagonalTopLeft, diagonalTopRight]
+
+    resultsList = Enum.map(winningCombos,
+        fn x -> isAllSameToken(x) end)
+
 
     Enum.member?(resultsList, true)
   end

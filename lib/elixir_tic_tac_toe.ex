@@ -1,9 +1,5 @@
 defmodule ElixirTicTacToe do
 
-  def hello do
-    :world
-  end
-
   def printBoard(inputList) do
     printedBoard = "\n #{inputList[:spotOne]} | #{inputList[:spotTwo]} | #{inputList[:spotThree]} "<>
                     "\n---+---+---\n "<>
