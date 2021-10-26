@@ -1,12 +1,12 @@
 defmodule GetUserMove do
   def getMove(board, token) do
-
     raw_input = _slugInput()
 
-    # Check for Valid input
-    _inputChecker(_createValidInputArray(board, token, []), raw_input)
+    checked_input = _inputChecker(
+            _createValidInputArray(board, token, []), raw_input)
 
-    # Replace appropriate  Space
+    _replacementFunction(board, token, checked_input, [])
+
   end
 
   def _slugInput() do
@@ -37,6 +37,21 @@ defmodule GetUserMove do
       # Insert user input loop
       false
     end
+  end
+
+  def _replacementFunction([head|tail], token, replacement, recursiveList) do
+
+    if elem(head, 1) != replacement do
+      _replacementFunction(tail, token, replacement, [head|recursiveList])
+    else
+      Enum.reverse(recursiveList) ++ [
+        {elem(head, 0), token}|tail
+      ]
+    end
+  end
+
+  def _replacementFunction([], token, replacement, recursiveList) do
+    IO.puts("Something Went Wrong, Replacement Not Found!")
   end
 
 end

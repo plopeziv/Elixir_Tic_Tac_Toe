@@ -1,6 +1,6 @@
 defmodule GetUserMoveTest do
   use ExUnit.Case, async: false
-  # import ExUnit.CaptureIO
+  import ExUnit.CaptureIO
   import Mock
   doctest GetUserMove
 
@@ -55,6 +55,22 @@ defmodule GetUserMoveTest do
     array = [4, 5, 6, 7]
 
     assert GetUserMove._inputChecker(array, 7) == 7
+  end
+
+  test "Replacement Function Replaces Value in Key Pair" do
+    array = [spotOne: "1", spotTwo: "2", spotThree: "3", spotFour: "4"]
+
+    userToken = "a"
+    chosenSpot = "3"
+
+    assert GetUserMove._replacementFunction(array, userToken, chosenSpot, []) == [
+      spotOne: "1", spotTwo: "2", spotThree: "a", spotFour: "4"
+    ]
+  end
+
+  test "Replacement Function Bug Message" do
+    assert capture_io(fn -> GetUserMove._replacementFunction([], "a", "3", [])
+        end) == "Something Went Wrong, Replacement Not Found!\n"
   end
 
 end
