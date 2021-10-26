@@ -45,4 +45,16 @@ defmodule GetUserMoveTest do
     ]
   end
 
+  test "Input Checker Returns False When Element NOT in Array" do
+    array = [ 4, 5, 6, 7]
+
+    assert GetUserMove._inputChecker(array, "a") == false
+  end
+
+  test "Input Checker Returns True When Element IN Array" do
+    array = [4, 5, 6, 7]
+
+    assert GetUserMove._inputChecker(array, 7) == 7
+  end
+
 end

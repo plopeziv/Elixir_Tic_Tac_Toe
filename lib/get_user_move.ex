@@ -4,6 +4,7 @@ defmodule GetUserMove do
     raw_input = _slugInput()
 
     # Check for Valid input
+    _inputChecker(_createValidInputArray(board, token, []), raw_input)
 
     # Replace appropriate  Space
   end
@@ -26,6 +27,16 @@ defmodule GetUserMove do
 
   def _createValidInputArray([], token, recursiveList) do
     recursiveList
+  end
+
+  def _inputChecker(array, testElement) do
+    if Enum.member?(array, testElement) do
+      testElement
+
+    else
+      # Insert user input loop
+      false
+    end
   end
 
 end
