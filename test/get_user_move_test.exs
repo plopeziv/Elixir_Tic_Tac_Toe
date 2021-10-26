@@ -45,10 +45,12 @@ defmodule GetUserMoveTest do
     ]
   end
 
-  test "Input Checker Returns False When Element NOT in Array" do
-    array = [ 4, 5, 6, 7]
+  test "Input Checker Loops Unitl Valid Input Is Selected" do
+    array = [ "4", "5", "6", "7"]
 
-    assert GetUserMove._inputChecker(array, "a") == false
+    Mock.with_mock IO, [gets: fn(_prompt) -> "6\n" end] do
+      assert GetUserMove._inputChecker(array, "a") == "6"
+    end
   end
 
   test "Input Checker Returns True When Element IN Array" do

@@ -34,8 +34,7 @@ defmodule GetUserMove do
       testElement
 
     else
-      # Insert user input loop
-      false
+      _inputChecker(array, _slugInput())
     end
   end
 
