@@ -25,7 +25,7 @@ defmodule GetUserMoveTest do
 
   test "Gather User Input and Slugify" do
     Mock.with_mock IO, [gets: fn(_prompt) -> "3\n" end] do
-      result = GetUserMove._slugInput()
+      result = GetUserMove._slugInput("This is a test string")
       assert result == "3"
     end
 

@@ -1,6 +1,6 @@
 defmodule GetUserMove do
   def getMove(board, token) do
-    raw_input = _slugInput()
+    raw_input = _slugInput("Your Turn! Please choose an empty game space. ")
 
     checked_input = _inputChecker(
             _createValidInputArray(board, token, []), raw_input)
@@ -9,8 +9,8 @@ defmodule GetUserMove do
 
   end
 
-  def _slugInput() do
-    returnedInput = IO.gets("Your Turn! Please choose an empty game space. ")
+  def _slugInput(string) do
+    returnedInput = IO.gets(string)
 
     String.trim(returnedInput)
   end
@@ -34,7 +34,7 @@ defmodule GetUserMove do
       testElement
 
     else
-      _inputChecker(array, _slugInput())
+      _inputChecker(array, _slugInput("Invalid Input: Please choose an empty game space. "))
     end
   end
 
