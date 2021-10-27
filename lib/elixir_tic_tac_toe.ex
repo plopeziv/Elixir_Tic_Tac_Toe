@@ -9,10 +9,18 @@ defmodule ElixirTicTacToe do
 
     IO.puts printedBoard
   end
+
+  def playTicTacToe(inputList) do
+    Code.require_file "get_user_move.ex", __DIR__
+
+    printBoard(inputList)
+    printBoard(GetUserMove.getMove(inputList, "A"))
+
+  end
 end
 
-possibleInputs = %{spotOne: "1", spotTwo: "2", spotThree: "3",
+possibleInputs = [spotOne: "1", spotTwo: "2", spotThree: "3",
 spotFour: "4", spotFive: "5", spotSix: "6",
-spotSeven: "7", spotEight: "8", spotNine: "9"}
+spotSeven: "7", spotEight: "8", spotNine: "9"]
 
-ElixirTicTacToe.printBoard(possibleInputs)
+ElixirTicTacToe.playTicTacToe(possibleInputs)
