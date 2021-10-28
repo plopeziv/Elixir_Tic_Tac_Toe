@@ -1,6 +1,6 @@
 defmodule ElixirTicTacToe do
 
-  def printBoard(inputList) do
+  def _printBoard(inputList) do
     printedBoard = "\n #{inputList[:spotOne]} | #{inputList[:spotTwo]} | #{inputList[:spotThree]} "<>
                     "\n---+---+---\n "<>
                     "#{inputList[:spotFour]} | #{inputList[:spotFive]} | #{inputList[:spotSix]} "<>
@@ -11,10 +11,8 @@ defmodule ElixirTicTacToe do
   end
 
   def playTicTacToe(inputList) do
-    Code.require_file "get_user_move.ex", __DIR__
 
-    printBoard(inputList)
-    printBoard(GetUserMove.getMove(inputList, "A"))
+    _printBoard(inputList)
 
   end
 end

@@ -16,6 +16,6 @@ defmodule ElixirTicTacToeTest do
                       spotFour: "4", spotFive: "X", spotSix: "6",
                       spotSeven: "X", spotEight: "8", spotNine: "9"]
 
-    assert capture_io(fn -> ElixirTicTacToe.printBoard(possibleInputs) end) == expectedOutput
+    assert capture_io(fn -> ElixirTicTacToe._printBoard(possibleInputs) end) == expectedOutput
   end
 end
