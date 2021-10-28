@@ -19,8 +19,14 @@ Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_do
 and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/elixir_tic_tac_toe](https://hexdocs.pm/elixir_tic_tac_toe).
 
+## Running he Game
+While inside the elixir_tic_tac_toe directory, run the command below.
+```elixir
+elixir gameRunner.ex
+```
+
 ## Testing
-While inside the elixir_tic_tac_toe directory run the command below.
+While inside the elixir_tic_tac_toe directory, run the command below.
 
 ```elixir
 mix test
