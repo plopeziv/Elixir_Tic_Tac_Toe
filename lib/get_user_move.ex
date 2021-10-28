@@ -1,7 +1,6 @@
 defmodule GetUserMove do
   def getMove(board, token) do
     raw_input = _slugInput("Your Turn! Please choose an empty game space. ")
-
     checked_input = _inputChecker(
             _createValidInputArray(board, token, []), raw_input)
 
@@ -9,10 +8,13 @@ defmodule GetUserMove do
 
   end
 
-  def _slugInput(string) do
-    returnedInput = IO.gets(string)
-
-    String.trim(returnedInput)
+  def _slugInput(messagePrompt) do
+    input = IO.gets(messagePrompt)
+    if input == :eof do
+      raise "Why wont this work"
+    else
+      String.trim(input)
+    end
   end
 
   def _createValidInputArray([head|tail], token, recursiveList) do
