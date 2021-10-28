@@ -1,7 +1,7 @@
-defmodule ComputerMoveTest do
+defmodule FirstComputerSpotTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
-  doctest ComputerMove
+  doctest FirstComputerSpot
 
   test "Replace First Spot Returns New Board" do
     board = [
@@ -12,7 +12,7 @@ defmodule ComputerMoveTest do
 
     userToken = "O"
 
-    assert ComputerMove.replaceFirstSpot(board, userToken, []) == [
+    assert FirstComputerSpot.replaceFirstSpot(board, userToken, []) == [
       spotOne: "O", spotTwo: "X", spotThree: "O",
       spotFour: "X", spotFive: "5", spotSix: "6",
       spotSeven: "7", spotEight: "8", spotNine: "9"
@@ -28,7 +28,7 @@ defmodule ComputerMoveTest do
 
     userToken = "O"
 
-    assert capture_io(fn -> ComputerMove.replaceFirstSpot(board, userToken, []) end) == "Cat's Game!\n"
+    assert capture_io(fn -> FirstComputerSpot.replaceFirstSpot(board, userToken, []) end) == "Cat's Game!\n"
   end
 
   test "Computer Realizes Game is Won" do
@@ -40,7 +40,7 @@ defmodule ComputerMoveTest do
 
     userToken = "O"
 
-    assert capture_io(fn -> ComputerMove.takeFirstAvailableSpot(board, userToken) end) == "Game Over!\n"
+    assert capture_io(fn -> FirstComputerSpot.takeFirstAvailableSpot(board, userToken) end) == "Game Over!\n"
   end
 
   test "Computer Takes First Available Spot" do
@@ -52,7 +52,7 @@ defmodule ComputerMoveTest do
 
     userToken ="O"
 
-    assert ComputerMove.takeFirstAvailableSpot(board, userToken) == [
+    assert FirstComputerSpot.takeFirstAvailableSpot(board, userToken) == [
       spotOne: "O", spotTwo: "X", spotThree: "3",
       spotFour: "4", spotFive: "5", spotSix: "6",
       spotSeven: "X", spotEight: "8", spotNine: "O"
