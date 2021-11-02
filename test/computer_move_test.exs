@@ -60,6 +60,18 @@ defmodule FirstComputerSpotTest do
 
   end
 
+  test "Computer's turn prompt" do
+    board = [
+      spotOne: "O", spotTwo: "2", spotThree: "3",
+      spotFour: "4", spotFive: "5", spotSix: "6",
+      spotSeven: "X", spotEight: "8", spotNine: "O"
+    ]
+
+    userToken ="O"
+
+    assert capture_io(fn -> FirstComputerSpot.takeFirstAvailableSpot(board,  userToken) end) == "Computer's Turn!\n"
+  end
+
 
 
 end

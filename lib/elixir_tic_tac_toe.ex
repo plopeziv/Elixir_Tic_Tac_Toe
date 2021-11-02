@@ -24,15 +24,26 @@ defmodule ElixirTicTacToe do
 
     if WinningCombo.isWin(inputList) == true do
       IO.puts("Game Over!")
-
     else
       _printBoard(inputList)
 
-      userBoard = getMove(inputList, playerToken)
-      _printBoard(userBoard)
+      userBoard = _userTurn(inputList, playerToken)
 
-      computerBoard = takeFirstAvailableSpot(userBoard, playerToken)
-      _printBoard(computerBoard)
+      _computerTurn(userBoard, playerToken)
     end
+  end
+
+  def _computerTurn(inputList, playerToken) do
+    computerBoard = takeFirstAvailableSpot(inputList, playerToken)
+    _printBoard(computerBoard)
+
+    computerBoard
+  end
+
+  def _userTurn(inputList, playerToken) do
+    userBoard = getMove(inputList, playerToken)
+    _printBoard(userBoard)
+
+    userBoard
   end
 end
