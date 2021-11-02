@@ -8,6 +8,7 @@ defmodule FirstComputerSpot do
       IO.puts("Game Over!")
 
     else
+      IO.puts("Computer's Turn!")
       replaceFirstSpot(board, token, [])
 
     end
@@ -25,9 +26,5 @@ defmodule FirstComputerSpot do
 
   def replaceFirstSpot([], token, recursiveList)do
     IO.puts("Cat's Game!")
-  end
-
-  def getThree() do
-    3
   end
 end

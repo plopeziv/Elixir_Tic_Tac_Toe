@@ -20,8 +20,4 @@ defmodule ElixirTicTacToeTest do
 
     assert capture_io(fn -> ElixirTicTacToe._printBoard(possibleInputs) end) == expectedOutput
   end
-
-  test "Three" do
-    assert playThree() == 3
-  end
 end

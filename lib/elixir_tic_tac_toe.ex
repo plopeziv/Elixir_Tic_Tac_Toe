@@ -1,6 +1,14 @@
 import GetUserMove
+import FirstComputerSpot
+import WinningCombo
 
 defmodule ElixirTicTacToe do
+
+  def playTicTacToe(inputList) do
+
+    _singleTurn(inputList, "A")
+
+  end
 
   def _printBoard(inputList) do
     printedBoard = "\n #{inputList[:spotOne]} | #{inputList[:spotTwo]} | #{inputList[:spotThree]} "<>
@@ -12,11 +20,19 @@ defmodule ElixirTicTacToe do
     IO.puts printedBoard
   end
 
-  def playTicTacToe(inputList) do
+  def _singleTurn(inputList, playerToken) do
 
-    _printBoard(inputList)
+    if WinningCombo.isWin(inputList) == true do
+      IO.puts("Game Over!")
 
-    _printBoard(getMove(inputList, "A"))
+    else
+      _printBoard(inputList)
 
+      userBoard = getMove(inputList, playerToken)
+      _printBoard(userBoard)
+
+      computerBoard = takeFirstAvailableSpot(userBoard, playerToken)
+      _printBoard(computerBoard)
+    end
   end
 end
