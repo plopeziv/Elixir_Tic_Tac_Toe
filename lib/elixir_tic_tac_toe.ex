@@ -1,3 +1,5 @@
+import GetUserMove
+
 defmodule ElixirTicTacToe do
 
   def _printBoard(inputList) do
@@ -13,6 +15,8 @@ defmodule ElixirTicTacToe do
   def playTicTacToe(inputList) do
 
     _printBoard(inputList)
+
+    _printBoard(getMove(inputList, "A"))
 
   end
 end

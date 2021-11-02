@@ -1,3 +1,5 @@
+import ElixirTicTacToe
+
 defmodule ElixirTicTacToeTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
@@ -17,5 +19,9 @@ defmodule ElixirTicTacToeTest do
                       spotSeven: "X", spotEight: "8", spotNine: "9"]
 
     assert capture_io(fn -> ElixirTicTacToe._printBoard(possibleInputs) end) == expectedOutput
+  end
+
+  test "Three" do
+    assert playThree() == 3
   end
 end

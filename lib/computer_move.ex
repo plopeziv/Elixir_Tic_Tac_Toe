@@ -1,7 +1,8 @@
+import WinningCombo
+
 defmodule FirstComputerSpot do
 
   def takeFirstAvailableSpot(board, token) do
-    import WinningCombo
 
     if WinningCombo.isWin(board) == true do
       IO.puts("Game Over!")
@@ -24,5 +25,9 @@ defmodule FirstComputerSpot do
 
   def replaceFirstSpot([], token, recursiveList)do
     IO.puts("Cat's Game!")
+  end
+
+  def getThree() do
+    3
   end
 end
