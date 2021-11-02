@@ -20,10 +20,23 @@ and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
 be found at [https://hexdocs.pm/elixir_tic_tac_toe](https://hexdocs.pm/elixir_tic_tac_toe).
 
 ## Running the Game
-While inside the elixir_tic_tac_toe directory, run the command below.
-```elixir
-elixir gameRunner.ex
+To start you must first create an executable. To do this, run the following command in the parent directory.
+
 ```
+mix escript.build
+```
+
+A succesful build will have teh following prompt. 
+
+```
+Generated escript elixir_tic_tac_toe with MIX_ENV=dev
+```
+
+Once the excutable is created, run the executable in the parent directory
+```
+./elixir_tic_tac_toe
+```
+Note: The executable must be updated with mix escript.build every time there is a change to your source code. 
 
 ## Testing
 While inside the elixir_tic_tac_toe directory, run the command below.
