@@ -6,7 +6,7 @@ defmodule ElixirTicTacToe do
 
   def playTicTacToe(inputList) do
 
-    _singleTurn(inputList, "A")
+    _gameLoop(inputList, "A")
 
   end
 
@@ -20,16 +20,21 @@ defmodule ElixirTicTacToe do
     IO.puts printedBoard
   end
 
-  def _singleTurn(inputList, playerToken) do
+  def _gameLoop(inputList, playerToken) do
 
-    if WinningCombo.isWin(inputList) == true do
+    if isWin(inputList) == true do
       IO.puts("Game Over!")
     else
       _printBoard(inputList)
 
       userBoard = _userTurn(inputList, playerToken)
 
-      _computerTurn(userBoard, playerToken)
+      if isWin(userBoard) == false do
+        _gameLoop(_computerTurn(userBoard, playerToken), playerToken)
+
+      else
+        IO.puts("Game Over!")
+      end
     end
   end
 
