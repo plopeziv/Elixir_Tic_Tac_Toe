@@ -1,3 +1,5 @@
+import WinningCombo
+
 defmodule GetUserMove do
   def getMove(board, token) do
     raw_input = _slugInput("Your Turn! Please choose an empty game space. ")

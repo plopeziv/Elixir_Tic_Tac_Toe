@@ -48,22 +48,6 @@ defmodule ElixirTicTacToeTest do
       spotSeven: "X", spotEight: "8", spotNine: "9"]
   end
 
-
-
-
-  test "User turn should return augmented list" do
-    possibleInputs = [spotOne: "1", spotTwo: "2", spotThree: "X",
-    spotFour: "4", spotFive: "5", spotSix: "6",
-    spotSeven: "X", spotEight: "8", spotNine: "9"]
-
-    Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "5" end] do
-      returnValue = ElixirTicTacToe._userTurn(possibleInputs, "A")
-      assert returnValue == [spotOne: "1", spotTwo: "2", spotThree: "X",
-      spotFour: "4", spotFive: "A", spotSix: "6",
-      spotSeven: "X", spotEight: "8", spotNine: "9"]
-    end
-  end
-
   test "Computer Win initiates Game Over!" do
     possibleInputs = [spotOne: "1", spotTwo: "X", spotThree: "X",
     spotFour: "4", spotFive: "5", spotSix: "6",
@@ -92,6 +76,48 @@ defmodule ElixirTicTacToeTest do
     end
   end
 
+  test "Computer turn initiates Cat's Game!" do
+    possibleInputs = [spotOne: "X", spotTwo: "A", spotThree: "A",
+    spotFour: "A", spotFive: "5", spotSix: "X",
+    spotSeven: "X", spotEight: "8", spotNine: "A"]
+
+    expectedOutput = "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | 5 | X " <>
+    "\n---+---+---" <>
+    "\n X | 8 | A \n\n" <>
+    "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | A | X " <>
+    "\n---+---+---" <>
+    "\n X | 8 | A \n\n" <>
+    "Computer's Turn!\n" <>
+    "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | A | X " <>
+    "\n---+---+---" <>
+    "\n X | X | A \n\n" <>
+    "Cat's Game!\n"
+
+
+    Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "5" end] do
+      assert capture_io(fn -> ElixirTicTacToe.playTicTacToe(possibleInputs)end) == expectedOutput
+    end
+  end
+
+  test "User turn should return augmented list" do
+    possibleInputs = [spotOne: "1", spotTwo: "2", spotThree: "X",
+    spotFour: "4", spotFive: "5", spotSix: "6",
+    spotSeven: "X", spotEight: "8", spotNine: "9"]
+
+    Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "5" end] do
+      returnValue = ElixirTicTacToe._userTurn(possibleInputs, "A")
+      assert returnValue == [spotOne: "1", spotTwo: "2", spotThree: "X",
+      spotFour: "4", spotFive: "A", spotSix: "6",
+      spotSeven: "X", spotEight: "8", spotNine: "9"]
+    end
+  end
+
   test "User win initiates Game Over!" do
     possibleInputs = [spotOne: "1", spotTwo: "A", spotThree: "A",
     spotFour: "4", spotFive: "5", spotSix: "6",
@@ -110,6 +136,28 @@ defmodule ElixirTicTacToeTest do
     "Game Over!\n"
 
     Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "1" end] do
+      assert capture_io(fn -> ElixirTicTacToe.playTicTacToe(possibleInputs)end) == expectedOutput
+    end
+  end
+
+  test "User turn initiates Cat's Game!" do
+    possibleInputs = [spotOne: "X", spotTwo: "A", spotThree: "A",
+    spotFour: "A", spotFive: "5", spotSix: "X",
+    spotSeven: "X", spotEight: "X", spotNine: "A"]
+
+    expectedOutput = "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | 5 | X " <>
+    "\n---+---+---" <>
+    "\n X | X | A \n\n" <>
+    "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | A | X " <>
+    "\n---+---+---" <>
+    "\n X | X | A \n\n" <>
+    "Cat's Game!\n"
+
+    Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "5" end] do
       assert capture_io(fn -> ElixirTicTacToe.playTicTacToe(possibleInputs)end) == expectedOutput
     end
   end
