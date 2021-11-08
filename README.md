@@ -26,7 +26,7 @@ To start you must first create an executable. To do this, run the following comm
 mix escript.build
 ```
 
-A succesful build will have teh following prompt. 
+A succesful build will have the following prompt. 
 
 ```
 Generated escript elixir_tic_tac_toe with MIX_ENV=dev

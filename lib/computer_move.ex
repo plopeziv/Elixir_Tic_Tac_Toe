@@ -2,29 +2,29 @@ import WinningCombo
 
 defmodule FirstComputerSpot do
 
-  def takeFirstAvailableSpot(board, token) do
+  def take_first_available_spot(board, token) do
 
-    if WinningCombo.isWin(board) == true do
+    if WinningCombo.is_win(board) == true do
       IO.puts("Game Over!")
 
     else
       IO.puts("Computer's Turn!")
-      replaceFirstSpot(board, token, [])
+      replace_first_spot(board, token, [])
 
     end
   end
 
-  def replaceFirstSpot([head|tail], token, recursiveList)do
+  def replace_first_spot([head|tail], token, recursive_list)do
     if elem(head, 1) == token or elem(head, 1) == "X" do
-      replaceFirstSpot(tail, token, [head|recursiveList])
+      replace_first_spot(tail, token, [head|recursive_list])
 
     else
-      Enum.reverse(recursiveList) ++ [
+      Enum.reverse(recursive_list) ++ [
           {elem(head, 0), "X"}|tail]
     end
   end
 
-  def replaceFirstSpot([], token, recursiveList)do
+  def replace_first_spot([], token, recursive_list)do
     IO.puts("Cat's Game!")
   end
 end
