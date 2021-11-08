@@ -1,5 +1,3 @@
-import WinningCombo
-
 defmodule GetUserMove do
   def get_move(board, token) do
     raw_input = _slug_input("Your Turn! Please choose an empty game space. ")
@@ -19,18 +17,18 @@ defmodule GetUserMove do
     end
   end
 
-  def _create_valid_input_array([head|tail], token, recursiveList) do
+  def _create_valid_input_array([head|tail], token, recursive_list) do
     if elem(head, 1) == token or elem(head, 1) == "X" do
-      _create_valid_input_array(tail, token, recursiveList)
+      _create_valid_input_array(tail, token, recursive_list)
 
     else
-      _create_valid_input_array(tail, token, [elem(head, 1)| recursiveList])
+      _create_valid_input_array(tail, token, [elem(head, 1)| recursive_list])
     end
 
   end
 
-  def _create_valid_input_array([], token, recursiveList) do
-    recursiveList
+  def _create_valid_input_array([], token, recursive_list) do
+    recursive_list
   end
 
   def _input_checker(array, test_element) do
@@ -42,18 +40,18 @@ defmodule GetUserMove do
     end
   end
 
-  def _replacement_function([head|tail], token, selected_spot, recursiveList) do
+  def _replacement_function([head|tail], token, selected_spot, recursive_list) do
 
     if elem(head, 1) != selected_spot do
-      _replacement_function(tail, token, selected_spot, [head|recursiveList])
+      _replacement_function(tail, token, selected_spot, [head|recursive_list])
     else
-      Enum.reverse(recursiveList) ++ [
+      Enum.reverse(recursive_list) ++ [
         {elem(head, 0), token}|tail
       ]
     end
   end
 
-  def _replacement_function([], token, selected_spot, recursiveList) do
+  def _replacement_function([], token, selected_spot, recursive_list) do
     IO.puts("Something Went Wrong, Replacement Not Found!")
   end
 
