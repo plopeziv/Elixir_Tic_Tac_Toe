@@ -3,12 +3,12 @@ defmodule TTT.Player do
 
   schema "gamePlayers" do
     field :playerName, :string
-    field :Token, :string
+    field :token, :string
   end
 
   def changeset(player,  params \\ %{}) do
     player
-    |>Ecto.Changeset.cast(params,  [:playerName,  :Token])
-    |>Ecto.Changeset.validate_required([:playerName,  :Token])
+    |>Ecto.Changeset.cast(params,  [:playerName,  :token])
+    |>Ecto.Changeset.validate_required([:playerName,  :token])
   end
 end
