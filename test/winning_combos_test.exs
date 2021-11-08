@@ -75,7 +75,7 @@ defmodule WinningComboTest do
 
     user_token = "a"
 
-    assert WinningCombo.cats_game(board, user_token) == true
+    assert WinningCombo.is_cats_game(board, user_token) == true
   end
 
   test "Cats game NOT detected" do
@@ -87,7 +87,7 @@ defmodule WinningComboTest do
 
     user_token = "a"
 
-    assert WinningCombo.cats_game(board, user_token) == false
+    assert WinningCombo.is_cats_game(board, user_token) == false
   end
 
   test "Game over Returns Cats Game!" do
@@ -99,7 +99,7 @@ defmodule WinningComboTest do
 
     user_token = "a"
 
-    assert capture_io(fn -> WinningCombo.game_over(board, user_token) end) == "Cat's Game!\n"
+    assert capture_io(fn -> WinningCombo.is_game_over(board, user_token) end) == "Cat's Game!\n"
   end
 
   test "Game over Returns Game Over!" do
@@ -111,7 +111,7 @@ defmodule WinningComboTest do
 
     user_token = "a"
 
-    assert capture_io(fn -> WinningCombo.game_over(board, user_token) end) == "Game Over!\n"
+    assert capture_io(fn -> WinningCombo.is_game_over(board, user_token) end) == "Game Over!\n"
   end
 
   test "Game over Returns false" do
@@ -123,7 +123,7 @@ defmodule WinningComboTest do
 
     user_token = "a"
 
-    assert WinningCombo.game_over(board, user_token) == false
+    assert WinningCombo.is_game_over(board, user_token) == false
   end
 
 end

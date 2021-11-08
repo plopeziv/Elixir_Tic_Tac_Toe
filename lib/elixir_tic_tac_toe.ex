@@ -22,12 +22,12 @@ defmodule ElixirTicTacToe do
 
   def _game_loop(input_list, player_token) do
 
-    if game_over(input_list, player_token) == false do
+    if is_game_over(input_list, player_token) == false do
       _print_board(input_list)
 
       user_board = _user_turn(input_list, player_token)
 
-      if game_over(user_board, player_token) == false do
+      if is_game_over(user_board, player_token) == false do
         _game_loop(_computer_turn(user_board, player_token), player_token)
       end
     end

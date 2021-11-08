@@ -21,12 +21,12 @@ defmodule WinningCombo do
     Enum.member?(result_list, true)
   end
 
-  def game_over(board, user_token) do
+  def is_game_over(board, user_token) do
     cond do
       is_win(board) == true ->
         IO.puts("Game Over!")
 
-      cats_game(board, user_token) == true ->
+      is_cats_game(board, user_token) == true ->
         IO.puts("Cat's Game!")
 
       true ->
@@ -35,7 +35,7 @@ defmodule WinningCombo do
 
   end
 
-  def cats_game(board, user_token) do
+  def is_cats_game(board, user_token) do
     inputArray = _valid_input_array(board, user_token,  [])
 
     if length(inputArray) ==  0 do
