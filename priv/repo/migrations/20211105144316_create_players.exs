@@ -4,7 +4,7 @@ defmodule TTT.Repo.Migrations.CreatePlayers do
   def change do
     create  table(:gamePlayers)  do
       add :playerName, :string
-      add :Token,  :string
+      add :token,  :string
     end
 
   end
