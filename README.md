@@ -4,39 +4,33 @@ This application runs a user vs computer Tic-Tac-Toe command line game. To play 
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `elixir_tic_tac_toe` to your list of dependencies in `mix.exs`:
+In order to play Elixir Tic Tac Toe, Mix, Erlang, and Elixir must be installed locally. Elixir Tic Tac Toe was designed in an environment requiring Elixir 1.12 and greater. To install Elixir, use the ```brew isntall elixir``` command with Homebrew. For machines without Homebrew, please reference the Elixir website for specific machine install instructions. The website can be found at https://elixir-lang.org/install.html. 
 
-```elixir
-def deps do
-  [
-    {:elixir_tic_tac_toe, "~> 0.1.0"}
-  ]
-end
+With Mix installed, the following command will install hex to your local environment. If hex is already installed, this step can be omitted. 
+
+Note: The --force flag only needs to be used during automated setups, such as continous intigration platforms.
+
+```
+mix local.hex --force
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/elixir_tic_tac_toe](https://hexdocs.pm/elixir_tic_tac_toe).
+The following commands will install dependencies for both the game and test suite. Just like before, the --force flag is only necessary for automated setups. Installation dependencies can be  seen in the mix.exs file. 
+
+```
+mix deps.get
+mix local.rebar --force
+```
+
+Finally, the test suite can be ran using ```mix test```. At this point, Elixir Tic Tac Toe should be fully  installed. 
 
 ## Running the Game
-To start you must first create an executable. To do this, run the following command in the parent directory.
+To run Elixir Tic Tac Toe run the following command in the parent directory. 
 
 ```
-mix escript.build
+mix tic_tac_toe
 ```
 
-A succesful build will have the following prompt. 
-
-```
-Generated escript elixir_tic_tac_toe with MIX_ENV=dev
-```
-
-Once the excutable is created, run the executable in the parent directory
-```
-./elixir_tic_tac_toe
-```
-Note: The executable must be updated with mix escript.build every time there is a change to your source code. 
+While operating, the selection of spaces can be done via keyboad. Simply type your desired space followed by the enter key. Then follow the pompts until game end. 
 
 ## Testing
 While inside the elixir_tic_tac_toe directory, run the command below.
@@ -44,6 +38,8 @@ While inside the elixir_tic_tac_toe directory, run the command below.
 ```elixir
 mix test
 ```
+
+Note: To run the test continously ```mix test.watch``` is also available. This will refresh the test suite after changes to a file are saved. 
 
 ## Contributors
 
