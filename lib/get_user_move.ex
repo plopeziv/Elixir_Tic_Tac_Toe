@@ -17,18 +17,18 @@ defmodule GetUserMove do
     end
   end
 
-  def _create_valid_input_array([head|tail], token, recursive_list) do
+  def _create_valid_input_array([head|tail], token, traversed_spots) do
     if elem(head, 1) == token or elem(head, 1) == "X" do
-      _create_valid_input_array(tail, token, recursive_list)
+      _create_valid_input_array(tail, token, traversed_spots)
 
     else
-      _create_valid_input_array(tail, token, [elem(head, 1)| recursive_list])
+      _create_valid_input_array(tail, token, [elem(head, 1)| traversed_spots])
     end
 
   end
 
-  def _create_valid_input_array([], token, recursive_list) do
-    recursive_list
+  def _create_valid_input_array([], token, traversed_spots) do
+    traversed_spots
   end
 
   def _input_checker(array, test_element) do
@@ -40,18 +40,18 @@ defmodule GetUserMove do
     end
   end
 
-  def _replacement_function([head|tail], token, selected_spot, recursive_list) do
+  def _replacement_function([head|tail], token, selected_spot, traversed_spots) do
 
     if elem(head, 1) != selected_spot do
-      _replacement_function(tail, token, selected_spot, [head|recursive_list])
+      _replacement_function(tail, token, selected_spot, [head|traversed_spots])
     else
-      Enum.reverse(recursive_list) ++ [
+      Enum.reverse(traversed_spots) ++ [
         {elem(head, 0), token}|tail
       ]
     end
   end
 
-  def _replacement_function([], token, selected_spot, recursive_list) do
+  def _replacement_function([], token, selected_spot, traversed_spots) do
     IO.puts("Something Went Wrong, Replacement Not Found!")
   end
 

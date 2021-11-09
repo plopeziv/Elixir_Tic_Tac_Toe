@@ -49,18 +49,18 @@ defmodule WinningCombo do
     Enum.count(Enum.uniq(array_sequence)) == 1
   end
 
-  def _valid_input_array([head|tail], token, recursive_list) do
+  def _valid_input_array([head|tail], token, traversed_spots) do
     if elem(head, 1) == token or elem(head, 1) == "X" do
-      _valid_input_array(tail, token, recursive_list)
+      _valid_input_array(tail, token, traversed_spots)
 
     else
-      _valid_input_array(tail, token, [elem(head, 1)| recursive_list])
+      _valid_input_array(tail, token, [elem(head, 1)| traversed_spots])
     end
 
   end
 
-  def _valid_input_array([], token, recursive_list) do
-    recursive_list
+  def _valid_input_array([], token, traversed_spots) do
+    traversed_spots
   end
 
 end

@@ -14,17 +14,17 @@ defmodule FirstComputerSpot do
     end
   end
 
-  def replace_first_spot([head|tail], token, recursive_list)do
+  def replace_first_spot([head|tail], token, traversed_spots)do
     if elem(head, 1) == token or elem(head, 1) == "X" do
-      replace_first_spot(tail, token, [head|recursive_list])
+      replace_first_spot(tail, token, [head|traversed_spots])
 
     else
-      Enum.reverse(recursive_list) ++ [
+      Enum.reverse(traversed_spots) ++ [
           {elem(head, 0), "X"}|tail]
     end
   end
 
-  def replace_first_spot([], token, recursive_list)do
+  def replace_first_spot([], token, traversed_spots)do
     IO.puts("Cat's Game!")
   end
 end
