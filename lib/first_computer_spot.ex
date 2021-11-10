@@ -14,7 +14,7 @@ defmodule FirstComputerSpot do
     end
   end
 
-  def replace_first_spot([], token, traversed_spots)do
+  def replace_first_spot([], _token, _traversed_spots)do
     IO.puts("Cat's Game!")
   end
 end
