@@ -1,32 +1,32 @@
 defmodule WinningCombo do
 
-  def isWin(board) do
-    topRow = [board[:spotOne], board[:spotTwo], board[:spotThree]]
-    middleRow = [board[:spotFour], board[:spotFive], board[:spotSix]]
-    bottomRow = [board[:spotSeven], board[:spotEight], board[:spotNine]]
-    leftColumn = [board[:spotOne], board[:spotFour], board[:spotSeven]]
-    middleColumn = [board[:spotTwo], board[:spotFive], board[:spotEight]]
-    rightColumn = [board[:spootThree], board[:spootSix], board[:spotNine]]
-    diagonalTopLeft = [board[:spotOne], board[:spotFive], board[:spotNine]]
-    diagonalTopRight = [board[:spotThree], board[:spotFive], board[:spotSeven]]
+  def is_win(board) do
+    top_row = [board[:spotOne], board[:spotTwo], board[:spotThree]]
+    middle_row = [board[:spotFour], board[:spotFive], board[:spotSix]]
+    bottom_row = [board[:spotSeven], board[:spotEight], board[:spotNine]]
+    left_column = [board[:spotOne], board[:spotFour], board[:spotSeven]]
+    middle_column = [board[:spotTwo], board[:spotFive], board[:spotEight]]
+    right_column = [board[:spootThree], board[:spootSix], board[:spotNine]]
+    diagonal_top_left = [board[:spotOne], board[:spotFive], board[:spotNine]]
+    diagonal_top_right = [board[:spotThree], board[:spotFive], board[:spotSeven]]
 
-    winningCombos = [topRow, middleRow, bottomRow,
-                    leftColumn, middleColumn, rightColumn,
-                    diagonalTopLeft, diagonalTopRight]
+    winning_combos = [top_row, middle_row, bottom_row,
+                    left_column, middle_column, right_column,
+                    diagonal_top_left, diagonal_top_right]
 
-    resultsList = Enum.map(winningCombos,
-        fn x -> isAllSameToken(x) end)
+    result_list = Enum.map(winning_combos,
+        fn x -> is_all_same_token(x) end)
 
 
-    Enum.member?(resultsList, true)
+    Enum.member?(result_list, true)
   end
 
-  def gameOver(board, userToken) do
+  def is_game_over(board, user_token) do
     cond do
-      isWin(board) == true ->
+      is_win(board) == true ->
         IO.puts("Game Over!")
 
-      catsGame(board, userToken) == true ->
+      is_cats_game(board, user_token) == true ->
         IO.puts("Cat's Game!")
 
       true ->
@@ -35,8 +35,8 @@ defmodule WinningCombo do
 
   end
 
-  def catsGame(board, userToken) do
-    inputArray = _ValidInputArray(board, userToken,  [])
+  def is_cats_game(board, user_token) do
+    inputArray = _valid_input_array(board, user_token,  [])
 
     if length(inputArray) ==  0 do
       true
@@ -45,22 +45,22 @@ defmodule WinningCombo do
     end
   end
 
-  def isAllSameToken(arraySequence) do
-    Enum.count(Enum.uniq(arraySequence)) == 1
+  def is_all_same_token(array_sequence) do
+    Enum.count(Enum.uniq(array_sequence)) == 1
   end
 
-  def _ValidInputArray([head|tail], token, recursiveList) do
+  def _valid_input_array([head|tail], token, traversed_spots) do
     if elem(head, 1) == token or elem(head, 1) == "X" do
-      _ValidInputArray(tail, token, recursiveList)
+      _valid_input_array(tail, token, traversed_spots)
 
     else
-      _ValidInputArray(tail, token, [elem(head, 1)| recursiveList])
+      _valid_input_array(tail, token, [elem(head, 1)| traversed_spots])
     end
 
   end
 
-  def _ValidInputArray([], token, recursiveList) do
-    recursiveList
+  def _valid_input_array([], token, traversed_spots) do
+    traversed_spots
   end
 
 end

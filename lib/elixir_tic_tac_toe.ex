@@ -4,46 +4,48 @@ import WinningCombo
 
 defmodule ElixirTicTacToe do
 
-  def playTicTacToe(inputList) do
+  def play_TTT(board) do
 
-    _gameLoop(inputList, "A")
+    _game_loop(board, "A")
 
   end
 
-  def _printBoard(inputList) do
-    printedBoard = "\n #{inputList[:spotOne]} | #{inputList[:spotTwo]} | #{inputList[:spotThree]} "<>
+  def _print_board(board) do
+    printed_board = "\n #{board[:spotOne]} | #{board[:spotTwo]} | #{board[:spotThree]} "<>
                     "\n---+---+---\n "<>
-                    "#{inputList[:spotFour]} | #{inputList[:spotFive]} | #{inputList[:spotSix]} "<>
+                    "#{board[:spotFour]} | #{board[:spotFive]} | #{board[:spotSix]} "<>
                     "\n---+---+---\n "<>
-                    "#{inputList[:spotSeven]} | #{inputList[:spotEight]} | #{inputList[:spotNine]} \n"
+                    "#{board[:spotSeven]} | #{board[:spotEight]} | #{board[:spotNine]} \n"
 
-    IO.puts printedBoard
+    IO.puts printed_board
   end
 
-  def _gameLoop(inputList, playerToken) do
+  def _game_loop(board, player_token) do
 
-    if gameOver(inputList, playerToken) == false do
-      _printBoard(inputList)
+    if is_game_over(board, player_token) == false do
+      IO.puts("\nYour Turn!")
+      _print_board(board)
 
-      userBoard = _userTurn(inputList, playerToken)
+      user_board = _user_turn(board, player_token)
 
-      if gameOver(userBoard, playerToken) == false do
-        _gameLoop(_computerTurn(userBoard, playerToken), playerToken)
+      if is_game_over(user_board, player_token) == false do
+        IO.puts("Computer's Turn!")
+        _game_loop(_computer_turn(user_board, player_token), player_token)
       end
     end
   end
 
-  def _computerTurn(inputList, playerToken) do
-    computerBoard = takeFirstAvailableSpot(inputList, playerToken)
-    _printBoard(computerBoard)
+  def _computer_turn(board, player_token) do
+    computer_board = take_first_available_spot(board, player_token)
+    _print_board(computer_board)
 
-    computerBoard
+    computer_board
   end
 
-  def _userTurn(inputList, playerToken) do
-    userBoard = getMove(inputList, playerToken)
-    _printBoard(userBoard)
+  def _user_turn(board, player_token) do
+    user_board = get_move(board, player_token)
+    _print_board(user_board)
 
-    userBoard
+    user_board
   end
 end
