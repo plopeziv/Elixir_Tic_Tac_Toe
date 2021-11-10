@@ -27,7 +27,7 @@ defmodule GetUserMove do
 
   end
 
-  def _create_valid_input_array([], token, traversed_spots) do
+  def _create_valid_input_array([], _token, traversed_spots) do
     traversed_spots
   end
 
@@ -51,7 +51,7 @@ defmodule GetUserMove do
     end
   end
 
-  def _replacement_function([], token, selected_spot, traversed_spots) do
+  def _replacement_function([], _token, _selected_spot, _traversed_spots) do
     IO.puts("Something Went Wrong, Replacement Not Found!")
   end
 
