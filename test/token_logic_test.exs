@@ -1,7 +1,7 @@
 defmodule GetTokensTest do
   use ExUnit.Case, async: false
-  import ExUnit.CaptureIO
-  import Mock
+  # aimport ExUnit.CaptureIO
+  # import Mock
   doctest GetTokens
 
   test "First Query" do
