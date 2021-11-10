@@ -1,6 +1,6 @@
 defmodule GetTokens do
   def testQuery() do
-    [head|tail] = TTT.Player |> TTT.Repo.all
+    [head|_tail] = TTT.Player |> TTT.Repo.all
 
     head.playerName
   end
@@ -8,7 +8,7 @@ defmodule GetTokens do
   def queryPlayerToken(person) do
     require Ecto.Query
 
-    [head|tail]= TTT.Player |> Ecto.Query.where(playerName: "Matt") |> TTT.Repo.all
+    [head|_tail]= TTT.Player |> Ecto.Query.where(playerName: ^person) |> TTT.Repo.all
 
     head.token
   end

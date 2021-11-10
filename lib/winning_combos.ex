@@ -59,7 +59,7 @@ defmodule WinningCombo do
 
   end
 
-  def _valid_input_array([], token, traversed_spots) do
+  def _valid_input_array([], _token, traversed_spots) do
     traversed_spots
   end
 
