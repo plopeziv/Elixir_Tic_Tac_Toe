@@ -10,9 +10,9 @@ defmodule FirstComputerSpotTest do
       spotSeven: "7", spotEight: "8", spotNine: "9"
     ]
 
-    userToken = "O"
+    user_token = "O"
 
-    assert FirstComputerSpot.replaceFirstSpot(board, userToken, []) == [
+    assert FirstComputerSpot.replace_first_spot(board, user_token, []) == [
       spotOne: "O", spotTwo: "X", spotThree: "O",
       spotFour: "X", spotFive: "5", spotSix: "6",
       spotSeven: "7", spotEight: "8", spotNine: "9"
@@ -26,21 +26,9 @@ defmodule FirstComputerSpotTest do
       spotSeven: "X", spotEight: "O", spotNine: "X"
     ]
 
-    userToken = "O"
+    user_token = "O"
 
-    assert capture_io(fn -> FirstComputerSpot.replaceFirstSpot(board, userToken, []) end) == "Cat's Game!\n"
-  end
-
-  test "Computer Realizes Game is Won" do
-    board = [
-      spotOne: "O", spotTwo: "O", spotThree: "O",
-      spotFour: "4", spotFive: "5", spotSix: "6",
-      spotSeven: "7", spotEight: "8", spotNine: "9"
-    ]
-
-    userToken = "O"
-
-    assert capture_io(fn -> FirstComputerSpot.takeFirstAvailableSpot(board, userToken) end) == "Game Over!\n"
+    assert capture_io(fn -> FirstComputerSpot.replace_first_spot(board, user_token, []) end) == "Cat's Game!\n"
   end
 
   test "Computer Takes First Available Spot" do
@@ -50,16 +38,13 @@ defmodule FirstComputerSpotTest do
       spotSeven: "X", spotEight: "8", spotNine: "O"
     ]
 
-    userToken ="O"
+    user_token ="O"
 
-    assert FirstComputerSpot.takeFirstAvailableSpot(board, userToken) == [
+    assert FirstComputerSpot.take_first_available_spot(board, user_token) == [
       spotOne: "O", spotTwo: "X", spotThree: "3",
       spotFour: "4", spotFive: "5", spotSix: "6",
       spotSeven: "X", spotEight: "8", spotNine: "O"
     ]
 
   end
-
-
-
 end
