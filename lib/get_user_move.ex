@@ -1,6 +1,6 @@
 defmodule GetUserMove do
   def get_move(board, token) do
-    raw_input = _slug_input("Your Turn! Please choose an empty game space. ")
+    raw_input = _slug_input("Please choose an empty game space. ")
     checked_input = _input_checker(
             _create_valid_input_array(board, token, []), raw_input)
 

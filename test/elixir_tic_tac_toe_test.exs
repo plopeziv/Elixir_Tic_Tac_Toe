@@ -21,9 +21,7 @@ defmodule ElixirTicTacToeTest do
   end
 
   test "Computer Turn prints computer board" do
-    expected_output = "Computer's Turn!\n"<>
-    ""<>
-    "\n X | 2 | X "<>
+    expected_output = "\n X | 2 | X "<>
     "\n---+---+---"<>
     "\n 4 | 5 | 6 "<>
     "\n---+---+---"<>
@@ -53,7 +51,8 @@ defmodule ElixirTicTacToeTest do
     spotFour: "4", spotFive: "5", spotSix: "6",
     spotSeven: "7", spotEight: "8", spotNine: "9"]
 
-    expected_output = "\n 1 | X | X " <>
+    expected_output = "\nYour Turn!\n" <>
+    "\n 1 | X | X " <>
     "\n---+---+---" <>
     "\n 4 | 5 | 6 " <>
     "\n---+---+---" <>
@@ -81,7 +80,8 @@ defmodule ElixirTicTacToeTest do
     spotFour: "A", spotFive: "5", spotSix: "X",
     spotSeven: "X", spotEight: "8", spotNine: "A"]
 
-    expected_output = "\n X | A | A " <>
+    expected_output = "\nYour Turn!\n" <>
+    "\n X | A | A " <>
     "\n---+---+---" <>
     "\n A | 5 | X " <>
     "\n---+---+---" <>
@@ -123,7 +123,8 @@ defmodule ElixirTicTacToeTest do
     spotFour: "4", spotFive: "5", spotSix: "6",
     spotSeven: "7", spotEight: "8", spotNine: "9"]
 
-    expected_output = "\n 1 | A | A " <>
+    expected_output = "\nYour Turn!\n" <>
+    "\n 1 | A | A " <>
     "\n---+---+---" <>
     "\n 4 | 5 | 6 " <>
     "\n---+---+---" <>
@@ -145,7 +146,8 @@ defmodule ElixirTicTacToeTest do
     spotFour: "A", spotFive: "5", spotSix: "X",
     spotSeven: "X", spotEight: "X", spotNine: "A"]
 
-    expected_output = "\n X | A | A " <>
+    expected_output = "\nYour Turn!\n" <>
+    "\n X | A | A " <>
     "\n---+---+---" <>
     "\n A | 5 | X " <>
     "\n---+---+---" <>

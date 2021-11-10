@@ -31,18 +31,6 @@ defmodule FirstComputerSpotTest do
     assert capture_io(fn -> FirstComputerSpot.replace_first_spot(board, user_token, []) end) == "Cat's Game!\n"
   end
 
-  test "Computer Realizes Game is Won" do
-    board = [
-      spotOne: "O", spotTwo: "O", spotThree: "O",
-      spotFour: "4", spotFive: "5", spotSix: "6",
-      spotSeven: "7", spotEight: "8", spotNine: "9"
-    ]
-
-    user_token = "O"
-
-    assert capture_io(fn -> FirstComputerSpot.take_first_available_spot(board, user_token) end) == "Game Over!\n"
-  end
-
   test "Computer Takes First Available Spot" do
     board = [
       spotOne: "O", spotTwo: "2", spotThree: "3",
@@ -59,19 +47,4 @@ defmodule FirstComputerSpotTest do
     ]
 
   end
-
-  test "Computer's turn prompt" do
-    board = [
-      spotOne: "O", spotTwo: "2", spotThree: "3",
-      spotFour: "4", spotFive: "5", spotSix: "6",
-      spotSeven: "X", spotEight: "8", spotNine: "O"
-    ]
-
-    user_token ="O"
-
-    assert capture_io(fn -> FirstComputerSpot.take_first_available_spot(board,  user_token) end) == "Computer's Turn!\n"
-  end
-
-
-
 end

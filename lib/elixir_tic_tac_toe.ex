@@ -23,11 +23,13 @@ defmodule ElixirTicTacToe do
   def _game_loop(board, player_token) do
 
     if is_game_over(board, player_token) == false do
+      IO.puts("\nYour Turn!")
       _print_board(board)
 
       user_board = _user_turn(board, player_token)
 
       if is_game_over(user_board, player_token) == false do
+        IO.puts("Computer's Turn!")
         _game_loop(_computer_turn(user_board, player_token), player_token)
       end
     end
