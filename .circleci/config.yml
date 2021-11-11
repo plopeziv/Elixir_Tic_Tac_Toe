@@ -27,6 +27,9 @@ jobs:
       - checkout
 
       # Create Table
+      - run: sudo apt-get update
+      - run: sudo apt-get install postgresql-client-9.6
+      - run: whoami
 
       - run: mix local.hex --force
 
