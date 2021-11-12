@@ -1,6 +1,12 @@
 defmodule GetTokens do
   import Ecto.Query
 
+  def return_token() do
+    player = _slug_input("Please enter your player ID")
+
+    retrieve_token(player)
+
+  end
 
   def retrieve_token(person) do
     if _is_player_in_db(person) do
@@ -15,10 +21,6 @@ defmodule GetTokens do
 
       token
     end
-  end
-
-  def get_player() do
-
   end
 
   def _slug_input(message_prompt) do

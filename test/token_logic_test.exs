@@ -4,6 +4,11 @@ defmodule GetTokensTest do
   import Mock
   doctest GetTokens
 
+  test "Return Token returns appropriate token" do
+    Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "Matt\n" end] do
+      assert GetTokens.return_token() == "M"
+    end
+  end
   test "Retrieve Token gives token of an available player" do
     assert GetTokens.retrieve_token("Dave")  == "D"
   end
@@ -17,15 +22,15 @@ defmodule GetTokensTest do
     assert GetTokens.retrieve_token("Stacey") == "O"
   end
 
-  test "Retriev Token prompts user as O" do
+  test "Retrieve Token prompts user as O" do
     assert capture_io(fn -> GetTokens.retrieve_token("Stacey")
       end) == "Player not found! User will play as O\n"
   end
 
   test "Gather User Input and Slugify" do
-    Mock.with_mock IO, [gets: fn(_prompt) -> "3\n" end] do
+    Mock.with_mock IO, [gets: fn(_prompt) -> "Jake\n" end] do
       result = GetUserMove._slug_input("This is a test string")
-      assert result == "3"
+      assert result == "Jake"
     end
 
   end
