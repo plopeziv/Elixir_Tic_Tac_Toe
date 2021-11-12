@@ -18,8 +18,6 @@ jobs:
       - image: circleci/postgres:9.6-alpine
         auth:
           password: password
-        environment:
-          POSTGRES_USER: postgres
 
     working_directory: ~/repo
     # Add steps to the job
