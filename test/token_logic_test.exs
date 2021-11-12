@@ -9,8 +9,18 @@ defmodule GetTokensTest do
       assert GetTokens.return_token() == "M"
     end
   end
+
   test "Retrieve Token gives token of an available player" do
-    assert GetTokens.retrieve_token("Dave")  == "D"
+
+    Mock.with_mock QueryAdapters, [:passthrough],
+      [
+      _is_player_in_db: fn(person) -> true end,
+      _query_player_token: fn(person) -> "Z" end
+      ]do
+
+      assert GetTokens.retrieve_token("Stacey") == "Z"
+    end
+
   end
 
   test "Retrieve Token welcomes user" do
@@ -34,19 +44,4 @@ defmodule GetTokensTest do
     end
 
   end
-
-  # Query Code Starts Here This Code will be mocked and  injected for above
-
-  test "Query for Player" do
-    assert GetTokens._query_player_token("Matt") == "M"
-  end
-
-  test "Is player in database returns True" do
-    assert GetTokens._is_player_in_db("Pedro") == true
-  end
-
-  test "Is player in database returns False" do
-    assert GetTokens._is_player_in_db("Sunny") == false
-  end
-
 end

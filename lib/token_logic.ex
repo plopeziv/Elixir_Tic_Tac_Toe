@@ -1,5 +1,5 @@
 defmodule GetTokens do
-  import Ecto.Query
+  import QueryAdapters
 
   def return_token() do
     player = _slug_input("Please enter your player ID")
@@ -9,8 +9,8 @@ defmodule GetTokens do
   end
 
   def retrieve_token(person) do
-    if _is_player_in_db(person) do
-      token = _query_player_token(person)
+    if QueryAdapters._is_player_in_db(person) do
+      token = QueryAdapters._query_player_token(person)
       IO.puts("Welcome #{person}! You will play as #{token}")
 
       token
@@ -30,17 +30,5 @@ defmodule GetTokens do
     else
       String.trim(input)
     end
-  end
-
-  def _query_player_token(person) do
-    [head|_tail]= TTT.Player |> where(playerName: ^person) |> TTT.Repo.all
-
-    head.token
-  end
-
-  def _is_player_in_db(person) do
-    query = from player in TTT.Player, where: player.playerName == ^person
-
-    TTT.Repo.exists?(query)
   end
 end
