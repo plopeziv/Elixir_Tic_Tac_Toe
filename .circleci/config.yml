@@ -32,11 +32,6 @@ jobs:
       - run: sudo apt-get install postgresql-9.6
       - run: whoami
 
-      -run: |
-        psql \
-        -d elixir_tic_tac_toe_repo \
-        -c "CREATE TABLE gamePlayers (name char(25));"
-
       - run: mix local.hex --force
 
       # specify any bash command here prefixed with `run: `
