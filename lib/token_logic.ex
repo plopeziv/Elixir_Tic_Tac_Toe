@@ -2,16 +2,16 @@ defmodule GetTokens do
   import QueryAdapters
 
   def return_token() do
-    player = _slug_input("Please enter your player ID")
+    player = _slug_input("Please enter your player ID: ")
 
     retrieve_token(player)
 
   end
 
-  def retrieve_token(person) do
-    if QueryAdapters._is_player_in_db(person) do
-      token = QueryAdapters._query_player_token(person)
-      IO.puts("Welcome #{person}! You will play as #{token}")
+  def retrieve_token(player) do
+    if QueryAdapters._is_player_in_db(player) do
+      token = QueryAdapters._query_player_token(player)
+      IO.puts("Welcome #{player}! You will play as #{token}")
 
       token
 

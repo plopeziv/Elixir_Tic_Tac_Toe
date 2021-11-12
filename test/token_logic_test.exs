@@ -5,7 +5,14 @@ defmodule GetTokensTest do
   doctest GetTokens
 
   test "Return Token returns appropriate token" do
-    Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "Matt\n" end] do
+    Mock.with_mocks(
+      [{QueryAdapters, [:passthrough],
+      [_is_player_in_db: fn(_person) -> true end,
+      _query_player_token: fn(_person) -> "M" end]},
+      {IO, [],
+      [gets: fn(_prompt) -> "Matt\n" end,
+      puts: fn (_prompt) -> "Welcome!" end]}
+    ])do
       assert GetTokens.return_token() == "M"
     end
   end
@@ -14,8 +21,8 @@ defmodule GetTokensTest do
 
     Mock.with_mock QueryAdapters, [:passthrough],
       [
-      _is_player_in_db: fn(person) -> true end,
-      _query_player_token: fn(person) -> "Z" end
+      _is_player_in_db: fn(_person) -> true end,
+      _query_player_token: fn(_person) -> "Z" end
       ]do
 
       assert GetTokens.retrieve_token("Stacey") == "Z"
@@ -24,17 +31,33 @@ defmodule GetTokensTest do
   end
 
   test "Retrieve Token welcomes user" do
-    assert capture_io(fn -> GetTokens.retrieve_token("Dave")
-      end) == "Welcome Dave! You will play as D\n"
+    Mock.with_mock QueryAdapters, [:passthrough],
+      [
+      _is_player_in_db: fn(_person) -> true end,
+      _query_player_token: fn(_person) -> "D" end
+      ]do
+      assert capture_io(fn -> GetTokens.retrieve_token("Dave")
+        end) == "Welcome Dave! You will play as D\n"
+    end
   end
 
   test "Retrieve Token returns O as spot" do
-    assert GetTokens.retrieve_token("Stacey") == "O"
+    Mock.with_mock QueryAdapters, [:passthrough],
+      [
+      _is_player_in_db: fn(_person) -> false end
+      ]do
+        assert GetTokens.retrieve_token("Stacey") == "O"
+      end
   end
 
   test "Retrieve Token prompts user as O" do
-    assert capture_io(fn -> GetTokens.retrieve_token("Stacey")
-      end) == "Player not found! User will play as O\n"
+    Mock.with_mock QueryAdapters, [:passthrough],
+      [
+      _is_player_in_db: fn(_person) -> false end
+      ]do
+      assert capture_io(fn -> GetTokens.retrieve_token("Stacey")
+        end) == "Player not found! User will play as O\n"
+    end
   end
 
   test "Gather User Input and Slugify" do

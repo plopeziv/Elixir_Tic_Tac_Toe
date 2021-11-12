@@ -5,15 +5,15 @@ defmodule QueryAdaptersTest do
   doctest QueryAdapters
 
   test "Query for Player" do
-    assert GetTokens._query_player_token("Matt") == "M"
+    assert QueryAdapters._query_player_token("Matt") == "M"
   end
 
   test "Is player in database returns True" do
-    assert GetTokens._is_player_in_db("Pedro") == true
+    assert QueryAdapters._is_player_in_db("Pedro") == true
   end
 
   test "Is player in database returns False" do
-    assert GetTokens._is_player_in_db("Sunny") == false
+    assert QueryAdapters._is_player_in_db("Sunny") == false
   end
 
 end
