@@ -1,6 +1,6 @@
-defmodule SpecialCombosTest do
+defmodule SpecialComputerMovesTest do
   use ExUnit.Case
-  doctest SpecialCombos
+  doctest SpecialComputerMoves
 
   test "Spot Five gets taken if Empty" do
     board = [
@@ -17,7 +17,7 @@ defmodule SpecialCombosTest do
 
     user_token = "T"
 
-    assert SpecialCombos.take_spot_five(board, user_token) == expected_outcome
+    assert SpecialComputerMoves.take_spot_five(board, user_token) == expected_outcome
   end
 
   test "take_spot_five does nothing if spotFive is taken by computer" do
@@ -29,7 +29,7 @@ defmodule SpecialCombosTest do
 
     user_token = "T"
 
-    assert SpecialCombos.take_spot_five(board, user_token) == board
+    assert SpecialComputerMoves.take_spot_five(board, user_token) == board
   end
 
   test "take_spot_five does nothing if spotFive is taken by user" do
@@ -41,7 +41,7 @@ defmodule SpecialCombosTest do
 
     user_token = "T"
 
-    assert SpecialCombos.take_spot_five(board, user_token) == board
+    assert SpecialComputerMoves.take_spot_five(board, user_token) == board
   end
 
 end
