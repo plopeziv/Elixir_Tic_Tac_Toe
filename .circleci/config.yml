@@ -18,6 +18,8 @@ jobs:
       - image: circleci/postgres:9.6-alpine
         auth:
           password: password
+        environment:
+          POSTGRES_DB: "elixir_tic_tac_toe_repo"
 
     working_directory: ~/repo
     # Add steps to the job
