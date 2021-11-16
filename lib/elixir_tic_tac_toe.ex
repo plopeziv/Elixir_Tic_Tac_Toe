@@ -8,7 +8,6 @@ defmodule ElixirTicTacToe do
   def play_TTT(board) do
 
     _game_loop(board, return_token())
-    # _game_loop(board, "A")
 
   end
 
