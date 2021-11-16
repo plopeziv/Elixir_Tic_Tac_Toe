@@ -38,6 +38,6 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: mix deps.get
       - run: mix local.rebar --force
-      - run: mix ecto.create
+      - run: MIX_ENV=test mix ecto.create
       - run: mix test
 
