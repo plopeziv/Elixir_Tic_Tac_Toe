@@ -29,7 +29,6 @@ jobs:
 
       # Create Table
       - run: sudo apt-get update
-      - run: sudo apt-get install postgresql-client-9.6
       - run: whoami
 
       - run: mix local.hex --force
@@ -38,5 +37,6 @@ jobs:
       # specify any bash command here prefixed with `run: `
       - run: mix deps.get
       - run: MIX_ENV=test mix ecto.create
+      - run: mix ecto.migrate
       - run: mix test
 
