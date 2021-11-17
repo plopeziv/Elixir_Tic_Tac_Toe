@@ -19,6 +19,7 @@ jobs:
         environment:
           POSTGRES_USER: postgres
           POSTGRES_DB: elixir_tic_tac_toe_repo
+          POSTGRES_PASSWORD: $DOCKERHUB_PASSWORD
 
     working_directory: ~/repo
     # Add steps to the job
