@@ -2,7 +2,7 @@ defmodule GetTokens do
   import QueryAdapters
 
   def return_token() do
-    player = _slug_input("Please enter your player ID: ")
+    player = _slug_input("Please enter your player's name : ")
 
     retrieve_token(player)
 
