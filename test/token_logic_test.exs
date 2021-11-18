@@ -4,13 +4,13 @@ defmodule GetTokensTest do
   # import Mock
   doctest GetTokens
 
-  test "First Query" do
+  # test "First Query" do
 
-    assert GetTokens.testQuery() == "Pedro"
-  end
+  #   assert GetTokens.testQuery() == "Pedro"
+  # end
 
-  test "Query for Player" do
-    assert GetTokens.queryPlayerToken("Matt") == "M"
-  end
+  # test "Query for Player" do
+  #   assert GetTokens.queryPlayerToken("Matt") == "M"
+  # end
 
 end
