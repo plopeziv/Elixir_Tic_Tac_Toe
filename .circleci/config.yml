@@ -36,7 +36,5 @@ jobs:
 
       # specify any bash command here prefixed with `run: `
       - run: mix deps.get
-      - run: MIX_ENV=test mix ecto.create
-      - run: mix ecto.migrate
       - run: mix test
 
