@@ -74,5 +74,4 @@ defmodule BestComputerSpotTest do
 
     assert BestComputerSpot.get_best_spot(board, player_token) == expected_output
   end
-
 end
