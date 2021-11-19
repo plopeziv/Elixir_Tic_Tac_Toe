@@ -1,5 +1,5 @@
 import GetUserMove
-import FirstComputerSpot
+import BestComputerSpot
 import WinningCombo
 import GetTokens
 
@@ -37,7 +37,7 @@ defmodule ElixirTicTacToe do
   end
 
   def _computer_turn(board, player_token) do
-    computer_board = take_first_available_spot(board, player_token)
+    computer_board = get_best_spot(board, player_token)
     _print_board(computer_board)
 
     computer_board

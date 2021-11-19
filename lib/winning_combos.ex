@@ -6,7 +6,7 @@ defmodule WinningCombo do
     bottom_row = [board[:spotSeven], board[:spotEight], board[:spotNine]]
     left_column = [board[:spotOne], board[:spotFour], board[:spotSeven]]
     middle_column = [board[:spotTwo], board[:spotFive], board[:spotEight]]
-    right_column = [board[:spootThree], board[:spootSix], board[:spotNine]]
+    right_column = [board[:spotThree], board[:spotSix], board[:spotNine]]
     diagonal_top_left = [board[:spotOne], board[:spotFive], board[:spotNine]]
     diagonal_top_right = [board[:spotThree], board[:spotFive], board[:spotSeven]]
 
