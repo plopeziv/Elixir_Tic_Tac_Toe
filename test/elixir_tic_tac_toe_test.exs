@@ -21,9 +21,9 @@ defmodule ElixirTicTacToeTest do
   end
 
   test "Computer Turn prints computer board" do
-    expected_output = "\n X | 2 | X "<>
+    expected_output = "\n 1 | 2 | X "<>
     "\n---+---+---"<>
-    "\n 4 | 5 | 6 "<>
+    "\n 4 | X | 6 "<>
     "\n---+---+---"<>
     "\n X | 8 | 9 "<>
     "\n\n"
@@ -41,8 +41,8 @@ defmodule ElixirTicTacToeTest do
     spotSeven: "X", spotEight: "8", spotNine: "9"]
 
     assert ElixirTicTacToe._computer_turn(possible_inputs, "A") == [
-      spotOne: "X", spotTwo: "2", spotThree: "X",
-      spotFour: "4", spotFive: "5", spotSix: "6",
+      spotOne: "1", spotTwo: "2", spotThree: "X",
+      spotFour: "4", spotFive: "X", spotSix: "6",
       spotSeven: "X", spotEight: "8", spotNine: "9"]
   end
 
