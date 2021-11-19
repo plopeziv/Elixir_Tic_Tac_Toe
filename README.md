@@ -32,13 +32,6 @@ mix tic_tac_toe
 
 While operating, the selection of spaces can be done via keyboad. Simply type your desired space followed by the enter key. Then follow the pompts until game end. 
 
-## Running the Game
-While in the lib directory, enter the initiation command below.
-
-```elixir
-elixir elixir_tic_tac_toe.ex
-```
-
 ## Testing
 While inside the elixir_tic_tac_toe directory, run the command below.
 
