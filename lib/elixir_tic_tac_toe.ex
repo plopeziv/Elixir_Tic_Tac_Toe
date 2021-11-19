@@ -1,12 +1,13 @@
 import GetUserMove
 import BestComputerSpot
 import WinningCombo
+import GetTokens
 
 defmodule ElixirTicTacToe do
 
   def play_TTT(board) do
 
-    _game_loop(board, "A")
+    _game_loop(board, return_token())
 
   end
 
