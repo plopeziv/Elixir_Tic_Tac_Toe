@@ -4,9 +4,9 @@ defmodule QueryAdaptersTest do
   # import Mock
   doctest QueryAdapters
 
-  setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TTT.Repo)
-  end
+  # setup do
+  #   :ok = Ecto.Adapters.SQL.Sandbox.checkout(TTT.Repo)
+  # end
 
 #   test "Query for Player" do
 #     assert QueryAdapters._query_player_token("Matt") == "M"
