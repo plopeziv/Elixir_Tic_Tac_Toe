@@ -3,9 +3,11 @@ defmodule TTT.Repo.Migrations.CreatePlayers do
 
   def change do
     create  table(:gamePlayers)  do
-      add :playerName, :string
+      add :playerName, :string, primary_key: true
       add :token,  :string
     end
+
+    create(unique_index(:gamePlayers, [:playerName]))
 
   end
 end
