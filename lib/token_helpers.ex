@@ -15,7 +15,7 @@ defmodule TokenHelpers do
       test_element
 
     else
-      _input_excluder(array, _slug_input("Invalid Input: Please choose an empty game space. "))
+      _input_excluder(array, _slug_input("Invalid Input: Please choose an available option. "))
     end
   end
 

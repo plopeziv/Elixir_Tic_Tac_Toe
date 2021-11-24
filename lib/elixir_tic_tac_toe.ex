@@ -7,8 +7,21 @@ defmodule ElixirTicTacToe do
 
   def play_TTT(board) do
 
-    _game_loop(board, return_player_token())
+    _game_loop(board, _player_setup())
 
+  end
+
+  def _player_setup() do
+    if String.capitalize(_is_new_player()) == "Y" do
+      GetTokens.return_new_player_token()
+    else
+      GetTokens.return_player_token()
+    end
+  end
+
+  def _is_new_player()do
+    GetUserMove._input_checker(["Y", "y", "N", "n"],
+      GetUserMove._slug_input("Would you like to play as a new player? (Y/N): "))
   end
 
   def _print_board(board) do

@@ -4,6 +4,34 @@ defmodule ElixirTicTacToeTest do
   import Mock
   doctest ElixirTicTacToe
 
+  test "Player setup returns player token for new player" do
+    Mock.with_mocks([
+      {GetUserMove, [:passthrough],
+        [_slug_input: fn(_prompt) -> "Y" end]},
+      {GetTokens, [:passthrough],
+        [return_new_player_token: fn() -> "D" end]},
+    ]) do
+      assert ElixirTicTacToe._player_setup() == "D"
+    end
+  end
+
+  test "Player setup returns player token for exisiting player" do
+    Mock.with_mocks([
+      {GetUserMove, [:passthrough],
+        [_slug_input: fn(_prompt) -> "n" end]},
+      {GetTokens, [:passthrough],
+        [return_player_token: fn() -> "D" end]},
+    ]) do
+      assert ElixirTicTacToe._player_setup() == "D"
+    end
+  end
+
+  test "Is New Player returns Yes or no" do
+    Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "Y\n" end] do
+      assert ElixirTicTacToe._is_new_player() == "Y"
+    end
+  end
+
   test "Print Board" do
 
     expected_output = ""<>

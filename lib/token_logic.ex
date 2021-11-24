@@ -2,10 +2,6 @@ defmodule GetTokens do
   import QueryAdapters
   import TokenHelpers
 
-  def return_token() do
-
-  end
-
   def return_player_token() do
     player = TokenHelpers._slug_input("Please enter your player's name : ")
 
