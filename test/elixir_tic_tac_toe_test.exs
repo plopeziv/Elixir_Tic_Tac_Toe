@@ -71,7 +71,7 @@ defmodule ElixirTicTacToeTest do
     "\nGame Over!\n"
 
     Mock.with_mocks([
-      {GetTokens, [:passthrough],[return_token: fn() -> "A" end]},
+      {GetTokens, [:passthrough],[return_player_token: fn() -> "A" end]},
       {IO, [:passthrough], [gets: fn(_prompt) -> "5" end]}
     ]) do
       assert capture_io(fn -> ElixirTicTacToe.play_TTT(possible_inputs)end) == expected_output
@@ -104,7 +104,7 @@ defmodule ElixirTicTacToeTest do
 
 
     Mock.with_mocks([
-      {GetTokens, [:passthrough],[return_token: fn() -> "A" end]},
+      {GetTokens, [:passthrough],[return_player_token: fn() -> "A" end]},
       {IO, [:passthrough], [gets: fn(_prompt) -> "5" end]}
      ]) do
       assert capture_io(fn -> ElixirTicTacToe.play_TTT(possible_inputs)end) == expected_output
@@ -143,7 +143,7 @@ defmodule ElixirTicTacToeTest do
     "Game Over!\n"
 
     Mock.with_mocks([
-      {GetTokens, [:passthrough],[return_token: fn() -> "A" end]},
+      {GetTokens, [:passthrough],[return_player_token: fn() -> "A" end]},
       {IO, [:passthrough], [gets: fn(_prompt) -> "1" end]}
     ])do
       assert capture_io(fn -> ElixirTicTacToe.play_TTT(possible_inputs)end) == expected_output
@@ -170,7 +170,7 @@ defmodule ElixirTicTacToeTest do
 
     Mock.with_mocks([
       {GetTokens, [:passthrough],
-        [return_token: fn() -> "A" end]},
+        [return_player_token: fn() -> "A" end]},
       {IO, [:passthrough],
         [gets: fn(_prompt) -> "5" end]},
       ])do

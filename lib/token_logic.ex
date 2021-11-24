@@ -1,11 +1,19 @@
 defmodule GetTokens do
   import QueryAdapters
+  import TokenHelpers
 
   def return_token() do
-    player = _slug_input("Please enter your player's name : ")
+
+  end
+
+  def return_player_token() do
+    player = TokenHelpers._slug_input("Please enter your player's name : ")
 
     retrieve_token(player)
+  end
 
+  def return_new_player_token() do
+    TokenHelpers._create_token("Please enter your desired token: ")
   end
 
   def retrieve_token(player) do
@@ -20,15 +28,6 @@ defmodule GetTokens do
       IO.puts("Player not found! User will play as #{token}")
 
       token
-    end
-  end
-
-  def _slug_input(message_prompt) do
-    input = IO.gets(message_prompt)
-    if input == :eof do
-      raise "End of File! Check for propper mocks and imports"
-    else
-      String.trim(input)
     end
   end
 end
