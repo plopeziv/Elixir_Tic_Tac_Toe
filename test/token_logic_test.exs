@@ -4,7 +4,7 @@ defmodule GetTokensTest do
   import Mock
   doctest GetTokens
 
-  test "Return Token returns appropriate token" do
+  test "Return Player Token returns appropriate token" do
     Mock.with_mocks(
       [{QueryAdapters, [:passthrough],
       [_is_player_in_db: fn(_person) -> true end,
@@ -13,7 +13,17 @@ defmodule GetTokensTest do
       [gets: fn(_prompt) -> "Matt\n" end,
       puts: fn (_prompt) -> "Welcome!" end]}
     ])do
-      assert GetTokens.return_token() == "M"
+      assert GetTokens.return_player_token() == "M"
+    end
+  end
+
+  test "Return New Player Token returns a new token" do
+
+    Mock.with_mocks(
+      [{IO, [], [gets: fn(_prompt) -> "Chris\n" end]},
+      {TokenHelpers, [:passthrough], [_create_token: fn(_prompt) -> "C" end]},
+      ]) do
+      assert GetTokens.return_new_player_token == "C"
     end
   end
 
@@ -58,13 +68,5 @@ defmodule GetTokensTest do
       assert capture_io(fn -> GetTokens.retrieve_token("Stacey")
         end) == "Player not found! User will play as O\n"
     end
-  end
-
-  test "Gather User Input and Slugify" do
-    Mock.with_mock IO, [gets: fn(_prompt) -> "Jake\n" end] do
-      result = GetUserMove._slug_input("This is a test string")
-      assert result == "Jake"
-    end
-
   end
 end
