@@ -1,7 +1,6 @@
 import GetUserMove
 import BestComputerSpot
 import WinningCombo
-import GetTokens
 
 defmodule ElixirTicTacToe do
 
