@@ -1,6 +1,4 @@
 import GameLoop
-
-
 defmodule ElixirTicTacToe do
 
   def play_TTT(board) do

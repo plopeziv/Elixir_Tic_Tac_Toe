@@ -1,3 +1,5 @@
+
+import IoFunctions
 import GetUserMove
 import BestComputerSpot
 import WinningCombo
@@ -5,9 +7,9 @@ import WinningCombo
 defmodule GameLoop do
 
   def _yes_no_checker(command_prompt)do
+
     slug = GetUserMove.input_checker(["Y", "y", "N", "n"],
       GetUserMove.slug_input(command_prompt))
-
     String.capitalize(slug)
   end
 
