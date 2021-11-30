@@ -1,5 +1,4 @@
 import GameLoop
-import GetTokens
 
 defmodule ElixirTicTacToe do
 
