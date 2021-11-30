@@ -4,8 +4,6 @@ import WinningCombo
 
 defmodule ElixirTicTacToe do
 
-
-
   def play_TTT(board) do
 
     game_token = _player_setup()
