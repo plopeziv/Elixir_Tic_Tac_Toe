@@ -69,4 +69,33 @@ defmodule GetTokensTest do
         end) == "Player not found! User will play as O\n"
     end
   end
+
+  test "Lets See if this works" do
+    possible_inputs = [spotOne: "X", spotTwo: "A", spotThree: "A",
+    spotFour: "A", spotFive: "5", spotSix: "X",
+    spotSeven: "X", spotEight: "X", spotNine: "A"]
+
+    expected_output = "\nYour Turn!\n" <>
+    "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | 5 | X " <>
+    "\n---+---+---" <>
+    "\n X | X | A \n\n" <>
+    "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | A | X " <>
+    "\n---+---+---" <>
+    "\n X | X | A \n\n" <>
+    "Cat's Game!\n"
+
+    io = MockIo.new()
+    io.set_input_values.(["5", "6"])
+
+    Mock.with_mocks([
+      {IO, [:passthrough],
+        [gets: fn(_prompt) -> io.gets.() end]},
+      ])do
+      assert capture_io(fn -> GameLoop._game_loop(possible_inputs, "A")end) == expected_output
+    end
+  end
 end
