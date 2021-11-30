@@ -51,5 +51,4 @@ defmodule ElixirTicTacToeTest do
           ) == "A\nA\nThank you for playing!\n"
     end
   end
-
 end
