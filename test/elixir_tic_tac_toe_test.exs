@@ -28,7 +28,7 @@ defmodule ElixirTicTacToeTest do
 
   test "Is New Player returns Yes or no" do
     Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "Y\n" end] do
-      assert ElixirTicTacToe._is_new_player() == "Y"
+      assert ElixirTicTacToe._yes_no_checker("This is a prompt :") == "Y"
     end
   end
 
@@ -196,6 +196,35 @@ defmodule ElixirTicTacToeTest do
     Mock.with_mocks([
       {IO, [:passthrough],
         [gets: fn(_prompt) -> "5" end]},
+      ])do
+      assert capture_io(fn -> ElixirTicTacToe._game_loop(possible_inputs, "A")end) == expected_output
+    end
+  end
+
+  test "Lets See if this works" do
+    possible_inputs = [spotOne: "X", spotTwo: "A", spotThree: "A",
+    spotFour: "A", spotFive: "5", spotSix: "X",
+    spotSeven: "X", spotEight: "X", spotNine: "A"]
+
+    expected_output = "\nYour Turn!\n" <>
+    "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | 5 | X " <>
+    "\n---+---+---" <>
+    "\n X | X | A \n\n" <>
+    "\n X | A | A " <>
+    "\n---+---+---" <>
+    "\n A | A | X " <>
+    "\n---+---+---" <>
+    "\n X | X | A \n\n" <>
+    "Cat's Game!\n"
+
+    io = MockIo.new()
+    io.set_input_values.(["5", "6"])
+
+    Mock.with_mocks([
+      {IO, [:passthrough],
+        [gets: fn(_prompt) -> io.gets.() end]},
       ])do
       assert capture_io(fn -> ElixirTicTacToe._game_loop(possible_inputs, "A")end) == expected_output
     end
