@@ -1,5 +1,6 @@
 import GameLoop
 
+
 defmodule ElixirTicTacToe do
 
   def play_TTT(board) do
@@ -19,6 +20,7 @@ defmodule ElixirTicTacToe do
       GetTokens.return_player_token()
     end
   end
+
 
   def _replay_game(token) do
     if GameLoop._yes_no_checker("Do you want to play again? (Y/N): ") == "Y" do

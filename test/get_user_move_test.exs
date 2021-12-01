@@ -25,7 +25,7 @@ defmodule GetUserMoveTest do
 
   test "Gather User Input and Slugify" do
     Mock.with_mock IO, [gets: fn(_prompt) -> "3\n" end] do
-      result = GetUserMove._slug_input("This is a test string")
+      result = GetUserMove.slug_input("This is a test string")
       assert result == "3"
     end
 
@@ -49,14 +49,14 @@ defmodule GetUserMoveTest do
     array = [ "4", "5", "6", "7"]
 
     Mock.with_mock IO, [gets: fn(_prompt) -> "6\n" end] do
-      assert GetUserMove._input_checker(array, "a") == "6"
+      assert GetUserMove.input_checker(array, "a") == "6"
     end
   end
 
   test "Input Checker Returns True When Element IN Array" do
     array = [4, 5, 6, 7]
 
-    assert GetUserMove._input_checker(array, 7) == 7
+    assert GetUserMove.input_checker(array, 7) == 7
   end
 
   test "Replacement Function Replaces Value in Key Pair" do

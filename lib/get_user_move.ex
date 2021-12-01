@@ -1,14 +1,14 @@
 defmodule GetUserMove do
   def get_move(board, token) do
-    raw_input = _slug_input("Please choose an empty game space. ")
-    checked_input = _input_checker(
+    raw_input = slug_input("Please choose an empty game space. ")
+    checked_input = input_checker(
             _create_valid_input_array(board, token, []), raw_input)
 
     _replacement_function(board, token, checked_input, [])
 
   end
 
-  def _slug_input(message_prompt) do
+  def slug_input(message_prompt) do
     input = IO.gets(message_prompt)
     if input == :eof do
       raise "End of File! Check for propper mocks and imports"
@@ -31,12 +31,12 @@ defmodule GetUserMove do
     traversed_spots
   end
 
-  def _input_checker(array, test_element) do
+  def input_checker(array, test_element) do
     if Enum.member?(array, test_element) do
       test_element
 
     else
-      _input_checker(array, _slug_input("Invalid Input: Please choose an available option. "))
+      input_checker(array, slug_input("Invalid Input: Please choose an available option. "))
     end
   end
 

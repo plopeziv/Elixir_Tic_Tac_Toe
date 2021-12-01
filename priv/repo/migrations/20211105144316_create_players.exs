@@ -7,7 +7,5 @@ defmodule TTT.Repo.Migrations.CreatePlayers do
       add :token,  :string
     end
 
-    # create(unique_index(:gamePlayers, [:playerName]))
-
   end
 end
