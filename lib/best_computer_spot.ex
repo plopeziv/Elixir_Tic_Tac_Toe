@@ -1,5 +1,4 @@
 defmodule BestComputerSpot do
-  import SpecialComputerMoves
   import FirstComputerSpot
   import GameEndingMoves
 
