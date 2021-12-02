@@ -1,6 +1,6 @@
 defmodule GetTokens do
   import QueryAdapters
-  import TokenHelpers
+  import IoFunctions
 
   def return_player_token() do
     player = slug_input("Please enter your player's name : ")
@@ -9,7 +9,7 @@ defmodule GetTokens do
   end
 
   def return_new_player_token() do
-    create_token("Please enter your desired token: ")
+    _create_token("Please enter your desired token: ")
   end
 
   def retrieve_token(player) do
@@ -25,5 +25,13 @@ defmodule GetTokens do
 
       token
     end
+  end
+
+  def _create_token(message_prompt) do
+    reserved_markers = [ "1", "2", "3", "4",
+                         "5", "6", "7", "8",
+                         "9", "X", "x", ""]
+
+    input_excluder(reserved_markers, slug_input(message_prompt))
   end
 end

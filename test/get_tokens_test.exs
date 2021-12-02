@@ -20,9 +20,8 @@ defmodule GetTokensTest do
   test "Return New Player Token returns a new token" do
 
     Mock.with_mocks(
-      [{IO, [], [gets: fn(_prompt) -> "Chris\n" end]},
-      {TokenHelpers, [:passthrough], [create_token: fn(_prompt) -> "C" end]},
-      ]) do
+      [{IoFunctions, [:passthrough],
+        [slug_input: fn(_prompt) -> "C" end]},]) do
       assert GetTokens.return_new_player_token == "C"
     end
   end

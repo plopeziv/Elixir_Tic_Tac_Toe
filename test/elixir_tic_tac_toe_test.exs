@@ -6,7 +6,7 @@ defmodule ElixirTicTacToeTest do
 
   test "Player setup returns player token for new player" do
     Mock.with_mocks([
-      {GetUserMove, [:passthrough],
+      {IoFunctions, [:passthrough],
         [slug_input: fn(_prompt) -> "Y" end]},
       {GetTokens, [:passthrough],
         [return_new_player_token: fn() -> "D" end]},
@@ -17,7 +17,7 @@ defmodule ElixirTicTacToeTest do
 
   test "Player setup returns player token for exisiting player" do
     Mock.with_mocks([
-      {GetUserMove, [:passthrough],
+      {IoFunctions, [:passthrough],
         [slug_input: fn(_prompt) -> "n" end]},
       {GetTokens, [:passthrough],
         [return_player_token: fn() -> "D" end]},

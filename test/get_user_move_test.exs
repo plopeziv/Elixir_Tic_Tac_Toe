@@ -23,14 +23,6 @@ defmodule GetUserMoveTest do
 
   end
 
-  test "Gather User Input and Slugify" do
-    Mock.with_mock IO, [gets: fn(_prompt) -> "3\n" end] do
-      result = GetUserMove.slug_input("This is a test string")
-      assert result == "3"
-    end
-
-  end
-
   test "Create a Valid Input Array" do
     board = [
       spotOne: "a", spotTwo: "X", spotThree: "a",

@@ -1,4 +1,5 @@
 defmodule GetUserMove do
+  import IoFunctions
   def get_move(board, token) do
     raw_input = slug_input("Please choose an empty game space. ")
     checked_input = input_checker(
@@ -6,15 +7,6 @@ defmodule GetUserMove do
 
     _replacement_function(board, token, checked_input, [])
 
-  end
-
-  def slug_input(message_prompt) do
-    input = IO.gets(message_prompt)
-    if input == :eof do
-      raise "End of File! Check for propper mocks and imports"
-    else
-      String.trim(input)
-    end
   end
 
   def _create_valid_input_array([head|tail], token, traversed_spots) do
