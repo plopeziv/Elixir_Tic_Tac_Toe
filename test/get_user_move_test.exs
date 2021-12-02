@@ -37,20 +37,6 @@ defmodule GetUserMoveTest do
     ]
   end
 
-  test "Input Checker Loops Unitl Valid Input Is Selected" do
-    array = [ "4", "5", "6", "7"]
-
-    Mock.with_mock IO, [gets: fn(_prompt) -> "6\n" end] do
-      assert GetUserMove.input_checker(array, "a") == "6"
-    end
-  end
-
-  test "Input Checker Returns True When Element IN Array" do
-    array = [4, 5, 6, 7]
-
-    assert GetUserMove.input_checker(array, 7) == 7
-  end
-
   test "Replacement Function Replaces Value in Key Pair" do
     array = [spotOne: "1", spotTwo: "2", spotThree: "3", spotFour: "4"]
 

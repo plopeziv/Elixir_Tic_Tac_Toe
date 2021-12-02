@@ -23,15 +23,6 @@ defmodule GetUserMove do
     traversed_spots
   end
 
-  def input_checker(array, test_element) do
-    if Enum.member?(array, test_element) do
-      test_element
-
-    else
-      input_checker(array, slug_input("Invalid Input: Please choose an available option. "))
-    end
-  end
-
   def _replacement_function([head|tail], token, selected_spot, traversed_spots) do
 
     if elem(head, 1) != selected_spot do
