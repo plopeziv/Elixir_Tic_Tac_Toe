@@ -1,5 +1,5 @@
 defmodule BestComputerSpot do
-  import GameEndingMoves
+  import ComputerMoves
 
   def get_best_spot(board, token)do
 
