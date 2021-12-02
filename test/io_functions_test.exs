@@ -1,11 +1,11 @@
-defmodule TokenHelpersTest do
+defmodule IoFunctionsTest do
   use ExUnit.Case, async: false
   import Mock
-  doctest TokenHelpers
+  doctest IoFunctions
 
   test "Gather User Input and Slugify" do
     Mock.with_mock IO, [gets: fn(_prompt) -> "Jake\n" end] do
-      result = TokenHelpers.slug_input("This is a test string")
+      result = IoFunctions.slug_input("This is a test string")
       assert result == "Jake"
     end
   end
@@ -15,7 +15,7 @@ defmodule TokenHelpersTest do
               "5", "6", "7", "8",
               "9", "X", "x"]
 
-    assert TokenHelpers._input_excluder(array, "a") == "a"
+    assert IoFunctions.input_excluder(array, "a") == "a"
   end
 
   test "Input Checker loops until valid token is selected" do
@@ -24,13 +24,7 @@ defmodule TokenHelpersTest do
               "9", "X", "x"]
 
     Mock.with_mock IO, [gets: fn(_prompt) -> "A\n" end] do
-      assert TokenHelpers._input_excluder(array, "7") == "A"
-    end
-  end
-
-  test "Create Token returns a token" do
-    Mock.with_mock IO, [gets: fn(_prompt) -> "A\n" end] do
-      assert TokenHelpers.create_token("this is a prompt") == "A"
+      assert IoFunctions.input_excluder(array, "7") == "A"
     end
   end
 
