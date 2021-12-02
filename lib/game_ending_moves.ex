@@ -45,6 +45,24 @@ defmodule GameEndingMoves do
     end
   end
 
+  def take_first_available_spot(board, token) do
+    _replace_first_spot(board, token, [])
+  end
+
+  def _replace_first_spot([head|tail], token, traversed_spots)do
+    if elem(head, 1) == token or elem(head, 1) == "X" do
+      _replace_first_spot(tail, token, [head|traversed_spots])
+
+    else
+      Enum.reverse(traversed_spots) ++ [
+          {elem(head, 0), "X"}|tail]
+    end
+  end
+
+  def _replace_first_spot([], _token, _traversed_spots)do
+    IO.puts("Cat's Game!")
+  end
+
   def _replace_first_difference(board, newBoard) do
 
     winning_boards = Enum.map(board, fn value_pair ->
