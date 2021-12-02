@@ -1,4 +1,4 @@
-defmodule GameEndingMoves do
+defmodule ComputerMoves do
   import WinningCombo
 
   def win_game(board, token) do

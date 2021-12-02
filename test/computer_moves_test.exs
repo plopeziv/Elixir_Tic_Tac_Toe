@@ -1,7 +1,7 @@
-defmodule GameEndingMovesTest do
+defmodule ComputerMovesTest do
   use ExUnit.Case
   import ExUnit.CaptureIO
-  doctest GameEndingMoves
+  doctest ComputerMoves
 
   test "Computer should win game" do
     board = [
@@ -16,7 +16,7 @@ defmodule GameEndingMovesTest do
       spotSeven: "X", spotEight: "8", spotNine: "9"
     ]
 
-    assert GameEndingMoves.win_game(board, "T") == expected_output
+    assert ComputerMoves.win_game(board, "T") == expected_output
   end
 
   test "Win game returns same board when no winning moves" do
@@ -26,7 +26,7 @@ defmodule GameEndingMovesTest do
       spotSeven: "7", spotEight: "8", spotNine: "9"
     ]
 
-    assert GameEndingMoves.win_game(board, "T") == board
+    assert ComputerMoves.win_game(board, "T") == board
   end
 
   test "Computer should Defend a Loss" do
@@ -42,7 +42,7 @@ defmodule GameEndingMovesTest do
       spotSeven: "X", spotEight: "T", spotNine: "9"
     ]
 
-    assert GameEndingMoves.defend_loss(board, "T") == expected_output
+    assert ComputerMoves.defend_loss(board, "T") == expected_output
   end
 
   test "Defend Loss returns same board when no winning moves" do
@@ -52,7 +52,7 @@ defmodule GameEndingMovesTest do
       spotSeven: "7", spotEight: "8", spotNine: "9"
     ]
 
-    assert GameEndingMoves.defend_loss(board, "T") == board
+    assert ComputerMoves.defend_loss(board, "T") == board
   end
 
   test "Spot Five gets taken if Empty" do
@@ -70,7 +70,7 @@ defmodule GameEndingMovesTest do
 
     user_token = "T"
 
-    assert GameEndingMoves.take_spot_five(board, user_token) == expected_outcome
+    assert ComputerMoves.take_spot_five(board, user_token) == expected_outcome
   end
 
   test "take_spot_five does nothing if spotFive is taken by computer" do
@@ -82,7 +82,7 @@ defmodule GameEndingMovesTest do
 
     user_token = "T"
 
-    assert GameEndingMoves.take_spot_five(board, user_token) == board
+    assert ComputerMoves.take_spot_five(board, user_token) == board
   end
 
   test "take_spot_five does nothing if spotFive is taken by user" do
@@ -94,7 +94,7 @@ defmodule GameEndingMovesTest do
 
     user_token = "T"
 
-    assert GameEndingMoves.take_spot_five(board, user_token) == board
+    assert ComputerMoves.take_spot_five(board, user_token) == board
   end
 
   test "Computer Takes First Available Spot" do
@@ -106,7 +106,7 @@ defmodule GameEndingMovesTest do
 
     user_token ="O"
 
-    assert GameEndingMoves.take_first_available_spot(board, user_token) == [
+    assert ComputerMoves.take_first_available_spot(board, user_token) == [
       spotOne: "O", spotTwo: "X", spotThree: "3",
       spotFour: "4", spotFive: "5", spotSix: "6",
       spotSeven: "X", spotEight: "8", spotNine: "O"
@@ -123,7 +123,7 @@ defmodule GameEndingMovesTest do
 
     user_token = "O"
 
-    assert GameEndingMoves._replace_first_spot(board, user_token, []) == [
+    assert ComputerMoves._replace_first_spot(board, user_token, []) == [
       spotOne: "O", spotTwo: "X", spotThree: "O",
       spotFour: "X", spotFive: "5", spotSix: "6",
       spotSeven: "7", spotEight: "8", spotNine: "9"
@@ -139,7 +139,7 @@ defmodule GameEndingMovesTest do
 
     user_token = "O"
 
-    assert capture_io(fn -> GameEndingMoves._replace_first_spot(board, user_token, []) end) == "Cat's Game!\n"
+    assert capture_io(fn -> ComputerMoves._replace_first_spot(board, user_token, []) end) == "Cat's Game!\n"
   end
 
   test "Function will replace first diffence in a key-pair list" do
@@ -161,7 +161,7 @@ defmodule GameEndingMovesTest do
     spotSeven: "7", spotEight: "8", spotNine: "9"
   ]
 
-  assert GameEndingMoves._replace_first_difference(board_1, board_2) == expected_output
+  assert ComputerMoves._replace_first_difference(board_1, board_2) == expected_output
   end
 
 end
