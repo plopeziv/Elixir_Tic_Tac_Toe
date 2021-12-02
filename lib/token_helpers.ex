@@ -1,6 +1,4 @@
 defmodule TokenHelpers do
-  import QueryAdapters
-
   def slug_input(message_prompt) do
     input = IO.gets(message_prompt)
     if input == :eof do
