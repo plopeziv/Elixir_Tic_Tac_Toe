@@ -1,14 +1,28 @@
+import IoFunctions
+import GetTokens
 import GetUserMove
 import BestComputerSpot
 import WinningCombo
-import GetTokens
 
 defmodule ElixirTicTacToe do
 
   def play_TTT(board) do
 
-    _game_loop(board, return_token())
+    _game_loop(board, _player_setup())
 
+  end
+
+  def _player_setup() do
+    if String.capitalize(_is_new_player()) == "Y" do
+      return_new_player_token()
+    else
+      return_player_token()
+    end
+  end
+
+  def _is_new_player()do
+    input_checker(["Y", "y", "N", "n"],
+      slug_input("Would you like to play as a new player? (Y/N): "))
   end
 
   def _print_board(board) do

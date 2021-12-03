@@ -23,14 +23,6 @@ defmodule GetUserMoveTest do
 
   end
 
-  test "Gather User Input and Slugify" do
-    Mock.with_mock IO, [gets: fn(_prompt) -> "3\n" end] do
-      result = GetUserMove._slug_input("This is a test string")
-      assert result == "3"
-    end
-
-  end
-
   test "Create a Valid Input Array" do
     board = [
       spotOne: "a", spotTwo: "X", spotThree: "a",
@@ -43,20 +35,6 @@ defmodule GetUserMoveTest do
     assert GetUserMove._create_valid_input_array(board, user_token, []) == [
       "9", "7", "6", "5", "4"
     ]
-  end
-
-  test "Input Checker Loops Unitl Valid Input Is Selected" do
-    array = [ "4", "5", "6", "7"]
-
-    Mock.with_mock IO, [gets: fn(_prompt) -> "6\n" end] do
-      assert GetUserMove._input_checker(array, "a") == "6"
-    end
-  end
-
-  test "Input Checker Returns True When Element IN Array" do
-    array = [4, 5, 6, 7]
-
-    assert GetUserMove._input_checker(array, 7) == 7
   end
 
   test "Replacement Function Replaces Value in Key Pair" do
