@@ -94,7 +94,7 @@ defmodule GetTokensTest do
       {IO, [:passthrough],
         [gets: fn(_prompt) -> io.gets.() end]},
       ])do
-      assert capture_io(fn -> GameLoop._game_loop(possible_inputs, "A")end) == expected_output
+      assert capture_io(fn -> GameLoop.game_loop(possible_inputs, "A")end) == expected_output
     end
   end
 end

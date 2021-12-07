@@ -43,7 +43,7 @@ defmodule ElixirTicTacToeTest do
         [gets: fn(_prompt) -> io.gets.() end]},
 
       {GameLoop, [:passthrough],
-        [_game_loop: fn(_new_board, _token) -> IO.puts("A")end]}
+        [game_loop: fn(_new_board, _token) -> IO.puts("A")end]}
       ])do
 
         assert capture_io(

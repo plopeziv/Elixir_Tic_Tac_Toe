@@ -6,7 +6,7 @@ defmodule GameLoopTest do
 
   test "Is New Player returns Yes or no" do
     Mock.with_mock IO, [:passthrough], [gets: fn(_prompt) -> "Y\n" end] do
-      assert GameLoop._yes_no_checker("This is a prompt :") == "Y"
+      assert GameLoop.yes_no_checker("This is a prompt :") == "Y"
     end
   end
 
@@ -79,7 +79,7 @@ defmodule GameLoopTest do
     Mock.with_mocks([
       {IO, [:passthrough], [gets: fn(_prompt) -> "5" end]}
     ]) do
-      assert capture_io(fn -> GameLoop._game_loop(possible_inputs, "A")end) == expected_output
+      assert capture_io(fn -> GameLoop.game_loop(possible_inputs, "A")end) == expected_output
     end
   end
 
@@ -111,7 +111,7 @@ defmodule GameLoopTest do
     Mock.with_mocks([
       {IO, [:passthrough], [gets: fn(_prompt) -> "5" end]}
      ]) do
-      assert capture_io(fn -> GameLoop._game_loop(possible_inputs, "A")end) == expected_output
+      assert capture_io(fn -> GameLoop.game_loop(possible_inputs, "A")end) == expected_output
     end
   end
 
@@ -149,7 +149,7 @@ defmodule GameLoopTest do
     Mock.with_mocks([
       {IO, [:passthrough], [gets: fn(_prompt) -> "1" end]}
     ])do
-      assert capture_io(fn -> GameLoop._game_loop(possible_inputs, "A")end) == expected_output
+      assert capture_io(fn -> GameLoop.game_loop(possible_inputs, "A")end) == expected_output
     end
   end
 
@@ -175,7 +175,7 @@ defmodule GameLoopTest do
       {IO, [:passthrough],
         [gets: fn(_prompt) -> "5" end]},
       ])do
-      assert capture_io(fn -> GameLoop._game_loop(possible_inputs, "A")end) == expected_output
+      assert capture_io(fn -> GameLoop.game_loop(possible_inputs, "A")end) == expected_output
     end
   end
 end

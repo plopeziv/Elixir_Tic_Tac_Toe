@@ -23,7 +23,7 @@ defmodule GameLoop do
     IO.puts printed_board
   end
 
-  def _game_loop(board, player_token) do
+  def game_loop(board, player_token) do
 
     if is_game_over(board, player_token) == false do
       IO.puts("\nYour Turn!")
@@ -33,7 +33,7 @@ defmodule GameLoop do
 
       if is_game_over(user_board, player_token) == false do
         IO.puts("Computer's Turn!")
-        _game_loop(_computer_turn(user_board, player_token), player_token)
+        game_loop(_computer_turn(user_board, player_token), player_token)
       end
     end
   end
