@@ -3,11 +3,11 @@ import GetTokens
 
 defmodule ElixirTicTacToe do
 
-  def play_TTT(board) do
+  def play_TTT() do
 
     game_token = _player_setup()
 
-    game_loop(board, game_token)
+    game_loop(return_clean_board(), game_token)
 
     _replay_game(game_token)
 
@@ -25,15 +25,16 @@ defmodule ElixirTicTacToe do
   def _replay_game(token) do
     if yes_no_checker("Do you want to play again? (Y/N): ") == "Y" do
 
-      clean_board = [
-        spotOne: "1", spotTwo: "2", spotThree: "3",
-        spotFour: "4", spotFive: "5", spotSix: "6",
-        spotSeven: "7", spotEight: "8", spotNine: "9"]
-
-      game_loop(clean_board, token)
+      game_loop(return_clean_board, token)
       _replay_game(token)
     else
       IO.puts("Thank you for playing!")
     end
+  end
+
+  def return_clean_board() do
+    [ spotOne: "1", spotTwo: "2", spotThree: "3",
+      spotFour: "4", spotFive: "5", spotSix: "6",
+      spotSeven: "7", spotEight: "8", spotNine: "9"]
   end
 end

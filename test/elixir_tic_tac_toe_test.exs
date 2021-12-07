@@ -52,4 +52,11 @@ defmodule ElixirTicTacToeTest do
     end
   end
 
+  test "Return clean board returns blank board" do
+    assert ElixirTicTacToe.return_clean_board() == [
+      spotOne: "1", spotTwo: "2", spotThree: "3",
+      spotFour: "4", spotFive: "5", spotSix: "6",
+      spotSeven: "7", spotEight: "8", spotNine: "9"]
+  end
+
 end
