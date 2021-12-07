@@ -9,7 +9,7 @@ defmodule GetTokens do
   end
 
   def return_new_player_token() do
-    _create_token("Please enter your desired token: ")
+    create_token("Please enter your desired token: ")
   end
 
   def retrieve_token(player) do
@@ -27,7 +27,7 @@ defmodule GetTokens do
     end
   end
 
-  def _create_token(message_prompt) do
+  def create_token(message_prompt) do
     reserved_markers = [ "1", "2", "3", "4",
                          "5", "6", "7", "8",
                          "9", "X", "x", ""]
