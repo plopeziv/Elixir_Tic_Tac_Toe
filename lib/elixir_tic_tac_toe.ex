@@ -21,7 +21,6 @@ defmodule ElixirTicTacToe do
     end
   end
 
-
   def _replay_game(token) do
     if yes_no_checker("Do you want to play again? (Y/N): ") == "Y" do
 
